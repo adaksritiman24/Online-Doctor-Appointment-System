@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Patient Registration Page</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    {{fm.first_name.label_tag}} 
+                </td>
+                <td>
+                    {{fm.first_name}} {{fm.first_name.errors | striptags}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{fm.last_name.label_tag}}
+                </td>
+                <td>
+                    {{fm.last_name}}  {{fm.flast_name.errors | striptags}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{fm.gender.label_tag}} 
+                </td>
+                <td>
+                    {{fm.gender}} {{fm.gender.errors | striptags}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{fm.dob.label_tag}}
+                </td>
+                <td>
+                    {{fm.dob}}  {{fm.dob.errors | striptags}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{fm.contact.label_tag}} 
+                </td>
+                <td>
+                    {{fm.contact}} {{fm.contact.errors | striptags}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{fm.email.label_tag}}
+                </td>
+                <td>
+                    {{fm.email}}  {{fm.email.errors | striptags}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{fm.username.label_tag}} 
+                </td>
+                <td>
+                    {{fm.username}} {{fm.username.errors | striptags}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{fm.password1.label_tag}} 
+                </td>
+                <td>
+                    {{fm.password1}} {{fm.password1.errors | striptags}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{fm.password2.label_tag}} 
+                </td>
+                <td>
+                    {{fm.password2}} {{fm.password2.errors | striptags}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <input type="submit" value="Submit" class="btn btn-sm btn-primary">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        {% for m in messages %}
+        {{m}}
+        {% endfor %}
+    </div>
+    <p><a href="{% url 'index' %}">Back to home</a></p>
+</form>
+
+{% endblock %}

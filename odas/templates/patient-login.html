@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Patient Login Page</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    Username :
+                </td>
+                <td>
+                    <input type="text" name="username" class="form-control" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password :
+                </td>
+                <td>
+                    <input type="password" name="password" class="form-control" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" value="Login" class="btn btn-success btn-sm">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <!-- error messages -->
+        {% for m in messages %}
+        {{m}}
+        {% endfor %}
+    </div>
+    <p><a href="{% url 'index' %}">Back to Home</a></p>
+</form>
+
+{% endblock %}
