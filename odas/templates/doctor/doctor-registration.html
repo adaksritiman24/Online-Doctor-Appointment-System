@@ -1,0 +1,10 @@
+{% extends 'doctor/base.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{fm.as_p}}
+</form>
+
+{% endblock %}

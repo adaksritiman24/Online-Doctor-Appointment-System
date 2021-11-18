@@ -13,13 +13,17 @@ class PatientDashboard(View):
                 "patient" : patient,
             }
            
-            return render(request, "patient-dashboard.html", context=context)
+            return render(request, "patient/patient-dashboard.html", context=context)
         return redirect('/accounts/login/patient/')    
        
 
 class IndexPage(View):
     def get(self, request):
-        return render(request,"index.html")        
+        return render(request,"patient/index.html")        
+
+class DoctorIndexPage(View):
+    def get(self, request):
+        return render(request,"doctor/index.html")
 
 def logoutPatient(request):        
     logout(request)
