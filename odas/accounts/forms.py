@@ -45,7 +45,8 @@ class DoctorRegistrationForm(UserCreationForm):
             'bio': forms.Textarea(attrs={'class':'form-control','cols':20,'rows':4}),
             'yoe': forms.TextInput(attrs={'class':'form-control'}),
             'charge': forms.TextInput(attrs={'class':'form-control'}),
-            
+            'speciality': forms.Select(attrs={'class':'form-control'}),
+
             'sun_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
             'sun_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
             'mon_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
