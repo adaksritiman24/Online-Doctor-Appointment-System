@@ -1,0 +1,24 @@
+{% extends "doctor/base.html" %}
+
+{% block content %}
+<div class="container">
+
+<div class="row mt-4">    
+{% for appointment in appointments %}
+
+<div class="card m-3">
+    <div class="card-header">
+      Appointment No. {{appointment.id}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Date: {{appointment.date}}</h5>
+      <p class="card-text">Appointment with {{appointment.patient.first_name}} {{appointment.patient.last_name}} on {{appointment.date}}</p>
+      <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-primary" target="_blank">Start Appointment</a>
+    </div>
+  </div>
+
+{% endfor %}
+</div>
+
+</div>
+{% endblock %}

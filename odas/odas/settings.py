@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chat',
+    'channels',
     'accounts',
     'mainapp',
 ]
@@ -72,6 +74,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'odas.wsgi.application'
+ASGI_APPLICATION = 'odas.asgi.application'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 
 # Database

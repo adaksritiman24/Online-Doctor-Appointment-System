@@ -4,6 +4,8 @@ from django.views import View
 from accounts.models import Patient, Doctor
 from accounts.views import isDoctor, isPatient
 from django.contrib.auth import logout
+from .models import Appointment
+from datetime import date, datetime
 # Create your views here.
 
 class PatientDashboard(View):
@@ -12,8 +14,11 @@ class PatientDashboard(View):
             if isDoctor(request.user):
                 return redirect('/dashboard/doctor/')
             patient = Patient.objects.get(pk = request.user.id)
+            doctors = Doctor.objects.all()
+
             context = {
                 "patient" : patient,
+                "doctors": doctors,
             }
            
             return render(request, "patient/patient-dashboard.html", context=context)
@@ -32,7 +37,8 @@ class DoctorDashboard(View):
             }
            
             return render(request, "doctor/doctor-dashboard.html", context=context)
-        return redirect('/accounts/login/doctor/')    
+        return redirect('/accounts/login/doctor/')   
+
        
 
 class IndexPage(View):
@@ -50,3 +56,31 @@ def logoutPatient(request):
 def logoutDoctor(request):        
     logout(request)
     return redirect('/doc')
+
+
+#appointment------------------
+
+def makeAppointment(request, doctorid):
+    doctor = Doctor.objects.get(pk = doctorid)
+    patient = Patient.objects.get(pk = request.user.id)
+    appointment = Appointment(patient = patient, doctor = doctor, date=datetime.today()) 
+    appointment.save()
+
+    return redirect('/appointments/patient/')
+
+
+def PatientAppointmentPage(request):
+    appointments = Appointment.objects.filter(patient = request.user)
+    context = {
+        'appointments': appointments,
+    }
+    return render(request,"patient/patient-appointment.html",context= context)
+
+
+def DoctorAppointmentPage(request):
+    appointments = Appointment.objects.filter(doctor = request.user)
+    context = {
+        'appointments': appointments,
+    }
+    return render(request,"doctor/doctor-appointment.html",context= context)
+

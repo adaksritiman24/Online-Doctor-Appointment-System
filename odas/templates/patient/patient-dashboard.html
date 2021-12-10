@@ -1,19 +1,64 @@
 {% extends "patient/base.html" %}
 
 {% block content %}
-<div>
-    {% for message in messages %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>{{message}}</strong> Welcome to dashboard!
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    {% endfor %}
-</div>
-<h1>
-Patient : {{patient.first_name}} {{patient.last_name}} 
-  
-</h1>
+<div class="container">
+  <div>
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>{{message}}</strong> Welcome to dashboard!
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+  </div>
+  <h1>
+  Patient : {{patient.first_name}} {{patient.last_name}} 
+    
+  </h1>
 
-<h3>Welcome To DashBoard</h3>
-<p><a href="{% url 'logout_p' %}">Logout</a></p>
+  <h3>Welcome To DashBoard</h3>
+  <p><a href="{% url 'logout_p' %}">Logout</a></p>
+
+  <h3 class = "text-center">Available Doctors</h3>
+  <hr>
+  <div class="row">
+    {% for doctor in doctors %}
+    <div class="card" style="width: 18rem; margin:5px;">
+      <div class="card-body">
+        <h5 class="card-title">Dr. {{doctor.first_name}} {{doctor.last_name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{doctor.speciality}}</h6>
+        <p style="margin-top: 15px; margin-bottom:0px; padding:0px;">Availability</p>
+        <hr style=" margin:4px; padding:0px;">
+        <div style="justify-content: center; align-items:center;">
+          {% if doctor.sun_start %}
+          <button disabled class="btn btn-primary btn-sm">Sun</button>
+          {% endif %}
+          {% if doctor.mon_start %}
+          <button disabled class="btn btn-primary btn-sm">Mon</button>
+          {% endif %}
+          {% if doctor.tue_start %}
+          <button disabled class="btn btn-primary btn-sm">Tue</button>
+          {% endif %}
+          {% if doctor.wed_start %}
+          <button disabled class="btn btn-primary btn-sm">Wed</button>
+          {% endif %}
+          {% if doctor.thu_start %}
+          <button disabled class="btn btn-primary btn-sm">Thu</button>
+          {% endif %}
+          {% if doctor.fri_start %}
+          <button disabled class="btn btn-primary btn-sm">Fri</button>
+          {% endif %}
+          {% if doctor.sat_start %}
+          <button disabled class="btn btn-primary btn-sm">Sat</button>
+          {% endif %}
+        </div>
+        <p class="mt-2">Charges: Rs.{{doctor.charge}}/-</p>
+        <a href="{% url 'makeApp' doctor.id %}" class="card-link">Book Appointment</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+
 {% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Chat</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" id = "username", name = "user">
+        <input type="submit" value="Enter name">
+    </form>
+    {% if request.session.user %}
+    <h3>Your name: {{request.session.user}}</h3>
+    {% endif %}
+    <a href="{% url 'main-view' %}" target="_blank">Go to the Chat room</a>
+    
+</body>
+</html>
