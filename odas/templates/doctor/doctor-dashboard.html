@@ -1,4 +1,4 @@
-{% extends "patient/base.html" %}
+{% extends "doctor/base.html" %}
 
 {% block content %}
 <div>
@@ -10,10 +10,10 @@
     {% endfor %}
 </div>
 <h1>
-Patient : {{patient.first_name}} {{patient.last_name}} 
+Doctor : Dr. {{doctor.first_name}} {{doctor.last_name}} 
   
 </h1>
 
 <h3>Welcome To DashBoard</h3>
-<p><a href="{% url 'logout_p' %}">Logout</a></p>
+<p><a href="{% url 'logout_d' %}">Logout</a></p>
 {% endblock %}

@@ -4,8 +4,10 @@
 
 <div class = "row" >
     <h2 class="text-center">Doctor Registration</h2>
-
-<form action="" method="post" class = "col-md-4 offset-4">
+{% for message in messages %}
+<div>{{message}}</div>
+{% endfor %}
+<form method="post" class = "col-md-4 offset-4">
     
     {% csrf_token %}
     <table  >
@@ -27,7 +29,12 @@
             </tr>
             <tr>
                 
-                    {{fm.gender.label_tag}}{{fm.gender}} {{fm.gender.errors | striptags}}
+                    {{fm.gender.label_tag}}{{fm.gender}} {{fm.gender.errors | striptags}}<br>
+                
+            </tr>
+            <tr>
+                
+                    {{fm.username.label_tag}}{{fm.username}} {{fm.username.errors | striptags}}
                 
             </tr>
             <tr>
@@ -172,5 +179,6 @@
         </tbody>
     </table>
 </form>
+<p><a href="{% url 'index_d' %}">Back to Home</a></p>
 </div>
 {% endblock %}

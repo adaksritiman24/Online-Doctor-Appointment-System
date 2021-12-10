@@ -7,4 +7,6 @@ urlpatterns = [
 
     #doctor stuffs
     path('doc',views.DoctorIndexPage.as_view(), name="index_d"),
+    path('logout/doctor/',views.logoutDoctor, name="logout_d"),
+    path('dashboard/doctor/',views.DoctorDashboard.as_view(), name="dd"),
 ]

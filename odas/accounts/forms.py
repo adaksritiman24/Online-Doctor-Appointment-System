@@ -28,13 +28,13 @@ class PatientRegistrationForm(UserCreationForm):
 class DoctorRegistrationForm(UserCreationForm):
     password1 = forms.CharField(label = 'Password',widget = forms.PasswordInput(attrs={'class':'form-control'}))
     password2 = forms.CharField(label = 'Retype Password',widget = forms.PasswordInput(attrs={'class':'form-control'}))
+    
     class Meta:
         model = Doctor
         fields = ['first_name','last_name','gender','dob','contact','username','email','speciality','bio','yoe',
         'charge','sun_start','sun_end','mon_start','mon_end','tue_start','tue_end','wed_start','wed_end',
         'thu_start','thu_end','fri_start','fri_end','sat_start','sat_end']
 
-        sun_start = forms.TimeField()
         widgets = {
             'dob' : DateInput(),
             'username': forms.TextInput(attrs={'class':'form-control'}),
@@ -42,26 +42,28 @@ class DoctorRegistrationForm(UserCreationForm):
             'last_name': forms.TextInput(attrs={'class':'form-control'}),
             'contact': forms.TextInput(attrs={'class':'form-control'}),
             'email': forms.EmailInput(attrs={'class':'form-control'}),
-            'bio': forms.Textarea(attrs={'class':'form-control','cols':20,'rows':4}),
+            'bio': forms.Textarea(attrs={'class':'form-control','cols':20,'rows':4,'required':False}),
             'yoe': forms.TextInput(attrs={'class':'form-control'}),
             'charge': forms.TextInput(attrs={'class':'form-control'}),
             'speciality': forms.Select(attrs={'class':'form-control'}),
 
-            'sun_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'sun_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'mon_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'mon_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'tue_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'tue_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'wed_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'wed_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'thu_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'thu_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'fri_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'fri_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'sat_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
-            'sat_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time'}),
+            'sun_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'sun_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'mon_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'mon_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'tue_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'tue_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'wed_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'wed_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'thu_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'thu_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'fri_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'fri_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'sat_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
+            'sat_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
         }
+    
+        
         labels = {
             'dob':'Date of Birth'
         }

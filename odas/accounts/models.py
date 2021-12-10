@@ -31,27 +31,27 @@ class Doctor(User):
     contact = models.CharField(max_length=12)
     dob = models.DateField()
     speciality = models.CharField(null=False, choices = SPECIALITIES, max_length=20)
-    bio = models.TextField(null=True, max_length=800)
+    bio = models.TextField(null=True, max_length=800, blank=True)
     yoe = models.IntegerField()
     charge = models.DecimalField(decimal_places=2,max_digits=7, max_length = 10)
     
-    sun_start = models.TimeField(null=True)
-    sun_end = models.TimeField(null = True)
+    sun_start = models.TimeField(null=True, blank=True)
+    sun_end = models.TimeField(null = True, blank=True)
     
-    mon_start = models.TimeField(null = True)
-    mon_end = models.TimeField(null = True)
+    mon_start = models.TimeField(null = True, blank=True)
+    mon_end = models.TimeField(null = True, blank=True)
     
-    tue_start = models.TimeField(null = True)
-    tue_end = models.TimeField(null = True)
+    tue_start = models.TimeField(null = True, blank=True)
+    tue_end = models.TimeField(null = True, blank=True)
     
-    wed_start = models.TimeField(null = True)
-    wed_end = models.TimeField(null = True)
+    wed_start = models.TimeField(null = True, blank=True)
+    wed_end = models.TimeField(null = True, blank=True)
     
-    thu_start = models.TimeField(null = True)
-    thu_end = models.TimeField(null = True)
+    thu_start = models.TimeField(null = True, blank=True)
+    thu_end = models.TimeField(null = True, blank=True)
     
-    fri_start = models.TimeField(null = True)
-    fri_end = models.TimeField(null = True)
+    fri_start = models.TimeField(null = True, blank=True)
+    fri_end = models.TimeField(null = True, blank=True)
     
-    sat_start = models.TimeField(null = True)
-    sat_end = models.TimeField(null = True)
+    sat_start = models.TimeField(null = True, blank=True)
+    sat_end = models.TimeField(null = True, blank=True)
