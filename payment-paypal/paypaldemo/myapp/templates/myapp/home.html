@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Home Page</h1>
+    <h3>Hello {{patient.name}}</h3>
+
+    {% if patient.paystatus == 0 %}
+    <center>
+        <div id="paypal-button-container"></div>
+        <h3>Amount : $50</h3>
+        <h4>Doctor: {{doctor.name}}</h4>
+    </center>
+    
+
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AXsqo2JZUs_Fy3yTqhNoOqquAH3uM0PmF5_z6nwiVoErxlT0a8vkcZ_UVZTjCZyCL7rwewioebl6UbWx&currency=USD">
+    </script>
+
+    <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            style: {
+                color:  'blue',
+                shape:  'pill',
+                label:  'pay',
+                height: 40
+            },
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '50'
+                        },
+                        payee : {
+                            email_address : '{{doctor.email}}'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                    // Successful capture! For demo purposes:
+                    //console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    //alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                    
+
+                    if(transaction.status === "COMPLETED"){
+                        $.ajax({
+                            type: "GET",
+                            url: "/success",
+                            data:{
+                                status:'success',
+                                userid:'{{patient.id}}',
+                            },
+                            success: function(data){
+                                console.log(data);
+                            }
+                        })
+                    }
+                    else{
+                        alert("Transaction Failed");
+                    }
+                    location.href = "{% url 'home' %}";
+                    // Replace the above to show a success message within this page, e.g.
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+    {% else %}
+    <center><h4>You have already paid</h4></center>
+    {% endif %}
+
+</body>
+</html>
