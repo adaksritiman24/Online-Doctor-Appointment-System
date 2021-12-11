@@ -52,13 +52,40 @@
           {% endif %}
         </div>
         <p class="mt-2">Charges: Rs.{{doctor.charge}}/-</p>
-        <a href="{% url 'makeApp' doctor.id %}" class="card-link">Book Appointment</a>
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#payment-for-{{doctor.id}}">
+            Book Appointment
+          </button>
+
+          <div class="modal fade" id="payment-for-{{doctor.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{doctor.id}}" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel{{doctor.id}}">Payment for Dr. {{doctor.first_name}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Total Amount Payable: ₹{{doctor.charge}}/-
+                  <button onclick="showPayment('{{doctor.charge}}','{{doctor.paypal}}','{{doctor.id}}')" class="btn btn-info btn-sm">Pay to proceed</button>
+                  <div class="mt-5" id = paypal-button-container-{{doctor.id}}></div>
+                  <a href="{% url 'makeApp' doctor.id %}" id="successful-payment-{{doctor.id}}" style="visibility: hidden;"></a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
       </div>
     </div>
     {% endfor %}
   </div>
 
 </div>
+
+
+
 
 
 {% endblock %}

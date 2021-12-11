@@ -34,6 +34,7 @@ class Doctor(User):
     bio = models.TextField(null=True, max_length=800, blank=True)
     yoe = models.IntegerField()
     charge = models.DecimalField(decimal_places=2,max_digits=7, max_length = 10)
+    paypal = models.EmailField(max_length=70, null = True, blank = True)
     
     sun_start = models.TimeField(null=True, blank=True)
     sun_end = models.TimeField(null = True, blank=True)
