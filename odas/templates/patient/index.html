@@ -1,24 +1,55 @@
 {% extends 'patient/base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="banner">
     <div class="container">
         <div class="banner-top">
-            <h1>Online Doctor Appointment System</h1>
+            <h1>Our Application Name</h1>
             <p>Welcome to a complete online doctor appointment and consultation system.
             Book your appointment with the best doctors around the world through our website.</p>
         </div>
         <div class="banner-bottom">
             <ul class = "our-services">
-                <li>Get the opportunity to book the best doctors at a very reasonable cost.</li>
-                <li>Select your preferred date and time for the appointment</li>
-                <li>Experience the easy process of appointment and consultation, avoiding the hassle of going to a clinic</li>
-                <li>Consult your doctor through video call</li>
-                <li>Upload your reports and download your prescriptions</li>
+                <li><i class="bi bi-record-circle-fill"></i> Get the opportunity to book the best doctors at a very reasonable cost.</li>
+                <li><i class="bi bi-record-circle-fill"></i> Select your preferred date and time for the appointment</li>
+                <li><i class="bi bi-record-circle-fill"></i> Experience the easy process of appointment and consultation, avoiding the hassle of going to a clinic</li>
+                <li><i class="bi bi-record-circle-fill"></i> Consult your doctor through video call</li>
+                <li><i class="bi bi-record-circle-fill"></i> Upload your reports and download your prescriptions</li>
             </ul>
             <p class="gyan">Let your health be out responsibility</p>
         </div>
     </div>
 </div>
-
+<div class="container">
+    <div class="features">
+        <div class="feature-card">
+            <div class="text-center">
+                <img src="{% static 'patient/imgs/index/debit-card.png' %}" width="120px" alt="Not Found">
+              </div>
+            <h3 class="text-center">Easy Payment</h3>
+            <p>Make your online payment via PayPal or Debit/Credit Card</p>
+        </div>
+        <div class="feature-card">
+            <div class="text-center">
+                <img src="{% static 'patient/imgs/index/customer-service.png' %}" width="120px" alt="Not Found">
+              </div>
+            <h3 class="text-center">One to one video call</h3>
+            <p>Consult your doctor through an one-to-one video call</p>
+        </div>
+        <div class="feature-card">
+            <div class="text-center">
+                <img src="{% static 'patient/imgs/index/doctor.png' %}" width="120px" alt="Not Found">
+              </div>
+            <h3 class="text-center">24X7 Availability of doctors</h3>
+            <p>Book your doctor anytime and fix the date and time for your own appointments</p>
+        </div>
+        <div class="feature-card">
+            <div class="text-center">
+                <img src="{% static 'patient/imgs/index/article.png' %}" width="120px" alt="Not Found">
+              </div>
+            <h3 class="text-center">Read Articles for free</h3>
+            <p>Read free articles related to your health written by doctors</p>
+        </div>
+    </div>
+</div>
 {% endblock %}

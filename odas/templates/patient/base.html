@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="{% static 'patient/css/index.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <title>ODAS</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">Online Doctor Appointment System</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +43,7 @@
         </div>
       </div>
     </nav>
+    <div style="height: 60px; background-color: rgb(25,135,84);"></div>
     {% block content %}
     {% endblock %}
 

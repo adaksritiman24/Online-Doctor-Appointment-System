@@ -9,20 +9,47 @@ a{
     text-decoration: none;
 }
 .banner{
-    background:linear-gradient(rgb(25,135,84), rgb(183, 226, 206));
+    background:linear-gradient(rgb(25,135,84), rgb(222, 226, 224));
     padding:20px 0px;
     color: rgb(61, 37, 5);
 }
 .banner-top{
     animation: 2s ease-in-out 0s 1 slideInFromTop forwards;
 }
+.banner-top h1{
+    font-size: 4rem;
+}
 .our-services{
     font-size: 3vh;
-    list-style-type:disc;
+    list-style-type: none;
 }
 
 .banner-bottom{
     animation: 2s ease-in-out 0s 1 slideInFromRight forwards;
+}
+.features{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feature-card{
+
+    background-color: rgb(222, 224, 224);
+    width: 450px;
+    margin: 40px;
+    padding: 13px;
+    border-radius: 12px;
+    animation: 2s ease-in-out 0s 1 slideInFromBottom forwards;
+}
+.feature-card h3{
+    margin: 10px 7px;
+}
+.feature-card p{
+    text-align: center;
+}
+.feature-card div{
+    padding: 60px 0px;
 }
 @keyframes slideInFromTop {
     0% {
@@ -30,7 +57,7 @@ a{
       opacity: 0;
     }
     100% {
-      transform: translateX(0);
+      transform: translateY(0);
       opacity: 1;
     }
 }
@@ -41,6 +68,17 @@ a{
     }
     100% {
       transform: translateX(0);
+      opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
       opacity: 1;
     }
 }
