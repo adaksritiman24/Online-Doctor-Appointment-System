@@ -1,9 +1,24 @@
 {% extends 'patient/base.html' %}
 
 {% block content %}
-
-<h1 class="text-center">Index Page for patient</h1>
-<p><a href="{% url 'pr' %}">Register</a></p>
-<p><a href="{% url 'pl' %}">Login</a></p>
+<div class="banner">
+    <div class="container">
+        <div class="banner-top">
+            <h1>Online Doctor Appointment System</h1>
+            <p>Welcome to a complete online doctor appointment and consultation system.
+            Book your appointment with the best doctors around the world through our website.</p>
+        </div>
+        <div class="banner-bottom">
+            <ul class = "our-services">
+                <li>Get the opportunity to book the best doctors at a very reasonable cost.</li>
+                <li>Select your preferred date and time for the appointment</li>
+                <li>Experience the easy process of appointment and consultation, avoiding the hassle of going to a clinic</li>
+                <li>Consult your doctor through video call</li>
+                <li>Upload your reports and download your prescriptions</li>
+            </ul>
+            <p class="gyan">Let your health be out responsibility</p>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

@@ -2,7 +2,48 @@
     margin: 0;
     padding: 0;
 }
-
+p{
+    font-size: 3vh;
+}
 a{
     text-decoration: none;
+}
+.banner{
+    background:linear-gradient(rgb(25,135,84), rgb(183, 226, 206));
+    padding:20px 0px;
+    color: rgb(61, 37, 5);
+}
+.banner-top{
+    animation: 2s ease-in-out 0s 1 slideInFromTop forwards;
+}
+.our-services{
+    font-size: 3vh;
+    list-style-type:disc;
+}
+
+.banner-bottom{
+    animation: 2s ease-in-out 0s 1 slideInFromRight forwards;
+}
+@keyframes slideInFromTop {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+.gyan{
+    font-weight: bold;
 }
