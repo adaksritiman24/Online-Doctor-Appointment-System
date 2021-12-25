@@ -1,11 +1,14 @@
-from django.http import request
+from django.db.models.aggregates import Count
+from django.http import request, JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from accounts.models import Patient, Doctor
 from accounts.views import isDoctor, isPatient
 from django.contrib.auth import logout
 from .models import Appointment
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
+from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Q 
 # Create your views here.
 
 class PatientDashboard(View):
@@ -84,3 +87,85 @@ def DoctorAppointmentPage(request):
     }
     return render(request,"doctor/doctor-appointment.html",context= context)
 
+#date and time selection---------------------------------------
+
+def getStartEndTime(doctor, day, q_date):
+    time_start = None
+    time_end = None 
+    if day == 1:
+        time_start = doctor.mon_start
+        time_end = doctor.mon_end
+    elif day == 2:
+        time_start = doctor.tue_start
+        time_end = doctor.tue_end
+    elif day == 3:
+        time_start = doctor.wed_start
+        time_end = doctor.wed_end
+    elif day == 4:
+        time_start = doctor.thu_start
+        time_end = doctor.thu_end
+    elif day == 5:
+        time_start = doctor.fri_start
+        time_end = doctor.fri_end
+    elif day == 6:
+        time_start = doctor.sat_start
+        time_end = doctor.sat_end
+    elif day == 7:
+        time_start = doctor.sun_start
+        time_end = doctor.sun_end
+    try:    
+        return datetime.combine(q_date, time_start), datetime.combine(q_date, time_end)    
+    except Exception as exe:
+        return None, None
+
+def getAvailableTimes(booked_slots, duration, start_time, end_time):
+    current = start_time
+    count = 0
+    available = {}
+    while True:
+        if current not in booked_slots:
+            count +=1
+            available[count] = current
+        current +=duration
+        if current + duration > end_time:
+            break
+    return available
+
+@csrf_exempt
+def getTimesForParticularDay(request):
+    type = request.POST['type']
+    date = request.POST['date']
+    doctor_id = request.POST['doctor_id']
+    print(type, date, doctor_id)
+    
+    duration = timedelta(minutes=30)
+
+    if type == "dateSearch":
+
+        q_date = datetime.strptime(date,"%Y-%m-%d")
+        day = q_date.isoweekday()
+        #get all appointment times for the date
+        appointments = Appointment.objects.filter(Q(date=q_date) & (Q(status="upcomming") | Q(status="ongoing")))
+        print(appointments)
+        
+        #get Doctor start and end times
+        doctor = Doctor.objects.get(pk =doctor_id)
+        start_time, end_time = getStartEndTime(doctor, day, q_date)
+        print(start_time, end_time)
+
+        booked_slots = set()
+        
+        for appointment in appointments:
+            booked_slots.add(
+                datetime.combine(q_date, appointment.time)
+            )
+        available_slots = {}
+        if start_time:
+            available_slots = getAvailableTimes(booked_slots, duration, start_time, end_time)
+        response = {
+            'success' : 'success '+ doctor_id,
+            'day' : q_date.isoweekday(),
+            'gone' : datetime.today() > q_date,
+            'available': available_slots
+        }
+    return JsonResponse(response)

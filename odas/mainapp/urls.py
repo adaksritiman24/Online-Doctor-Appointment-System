@@ -15,6 +15,9 @@ urlpatterns = [
     path('makeappointment/<int:doctorid>/',views.makeAppointment, name="makeApp"),
     path('appointments/patient/',views.PatientAppointmentPage, name="p_app"),
 
+    #patient appointment date and times
+    path('searchdate', views.getTimesForParticularDay, name = "gtfpd"),
+
     #doctor-appointment
     path('appointments/doctor/',views.DoctorAppointmentPage, name="d_app"),
 ]

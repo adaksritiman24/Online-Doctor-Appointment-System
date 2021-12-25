@@ -60,14 +60,29 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel{{doctor.id}}">Payment for Dr. {{doctor.first_name}}</h5>
+                  <h5 class="modal-title" id="exampleModalLabel{{doctor.id}}">Appointment with Dr. {{doctor.first_name}}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+
+
+
                   Total Amount Payable: ₹{{doctor.charge}}/-
-                  <button onclick="showPayment('{{doctor.charge}}','{{doctor.paypal}}','{{doctor.id}}')" class="btn btn-info btn-sm">Pay to proceed</button>
+                  <!-- <button onclick="showPayment('{{doctor.charge}}','{{doctor.paypal}}','{{doctor.id}}')" class="btn btn-info btn-sm">Pay to proceed</button> -->
+                  <p>Select A Date</p>
+                  <div class="text-center">
+                    <input type="date" id = "app-date-for-{{doctor.id}}">
+                    <button onclick="dateForAppointment('{{doctor.id}}')" class="btn btn-outline-warning">Confirm</button>
+                  </div>
+
+                  <div id = "available-times-for-{{doctor.id}}" class="text-center"></div>
+
                   <div class="mt-5" id = paypal-button-container-{{doctor.id}}></div>
                   <a href="{% url 'makeApp' doctor.id %}" id="successful-payment-{{doctor.id}}" style="visibility: hidden;"></a>
+
+
+
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
