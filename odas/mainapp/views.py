@@ -63,10 +63,12 @@ def logoutDoctor(request):
 
 #appointment------------------
 
-def makeAppointment(request, doctorid):
+def makeAppointment(request, doctorid, date, time):
+    date = datetime.strptime(date,'%d-%m-%Y').date()
+    time = datetime.strptime(time, '%H:%M').time()
     doctor = Doctor.objects.get(pk = doctorid)
     patient = Patient.objects.get(pk = request.user.id)
-    appointment = Appointment(patient = patient, doctor = doctor, date=datetime.today()) 
+    appointment = Appointment(patient = patient, doctor = doctor, date=date, time=time, status="upcomming") 
     appointment.save()
 
     return redirect('/appointments/patient/')
@@ -142,7 +144,7 @@ def getTimesForParticularDay(request):
 
     if type == "dateSearch":
 
-        q_date = datetime.strptime(date,"%Y-%m-%d")
+        q_date = datetime.strptime(date,"%Y-%m-%d").date()
         day = q_date.isoweekday()
         #get all appointment times for the date
         appointments = Appointment.objects.filter(Q(date=q_date) & (Q(status="upcomming") | Q(status="ongoing")))
@@ -165,7 +167,7 @@ def getTimesForParticularDay(request):
         response = {
             'success' : 'success '+ doctor_id,
             'day' : q_date.isoweekday(),
-            'gone' : datetime.today() > q_date,
+            'gone' : datetime.today().date() > q_date,
             'available': available_slots
         }
     return JsonResponse(response)

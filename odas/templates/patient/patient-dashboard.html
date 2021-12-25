@@ -68,7 +68,7 @@
 
 
                   Total Amount Payable: ₹{{doctor.charge}}/-
-                  <!-- <button onclick="showPayment('{{doctor.charge}}','{{doctor.paypal}}','{{doctor.id}}')" class="btn btn-info btn-sm">Pay to proceed</button> -->
+                  
                   <p>Select A Date</p>
                   <div class="text-center">
                     <input type="date" id = "app-date-for-{{doctor.id}}">
@@ -77,12 +77,19 @@
 
                   <div id = "available-times-for-{{doctor.id}}" class="text-center"></div>
 
+                  
+                  <a href="#" id="successful-payment-{{doctor.id}}" style="visibility: hidden;"></a>
+
+                  <span style ="visibility: hidden;" id = "charge-for-doctor-{{doctor.id}}">{{doctor.charge}}</span>
+                  <span style ="visibility: hidden;" id = "paypal-for-doctor-{{doctor.id}}">{{doctor.paypal}}</span>
+
+                  <span style ="visibility: hidden;" id = "date-for-doctor-{{doctor.id}}"></span>
+                  <span style ="visibility: hidden;" id = "time-for-doctor-{{doctor.id}}"></span>
+
+                  <div id = "date-and-time-for-{{doctor.id}}"></div>
+
+                  <button onclick="showPayment('{{doctor.charge}}','{{doctor.paypal}}','{{doctor.id}}')" class="btn btn-info btn-sm" id="pay-to-proceed-{{doctor.id}}" style="visibility: hidden;">Pay to proceed</button>
                   <div class="mt-5" id = paypal-button-container-{{doctor.id}}></div>
-                  <a href="{% url 'makeApp' doctor.id %}" id="successful-payment-{{doctor.id}}" style="visibility: hidden;"></a>
-
-
-
-
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

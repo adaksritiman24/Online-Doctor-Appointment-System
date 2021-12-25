@@ -12,7 +12,7 @@ urlpatterns = [
     path('dashboard/doctor/',views.DoctorDashboard.as_view(), name="dd"),
 
     #patient appointment
-    path('makeappointment/<int:doctorid>/',views.makeAppointment, name="makeApp"),
+    path('makeappointment/<int:doctorid>/<str:date>/<str:time>/',views.makeAppointment, name="makeApp"),
     path('appointments/patient/',views.PatientAppointmentPage, name="p_app"),
 
     #patient appointment date and times

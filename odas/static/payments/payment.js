@@ -1,6 +1,9 @@
 
 var showPayment=(charge, paypal_acc,id)=>{
-    console.log(charge, paypal_acc, id);
+    var date = document.getElementById('date-for-doctor-'+id).innerHTML;
+    var time = document.getElementById('time-for-doctor-'+id).innerHTML;
+    console.log("Date is ",date);
+    console.log(charge, paypal_acc, id, date, time);
     paypal.Buttons({
         style: {
             color:  'blue',
@@ -32,7 +35,9 @@ var showPayment=(charge, paypal_acc,id)=>{
                 
 
                 if(transaction.status === "COMPLETED"){
-                    document.querySelector('#successful-payment-'+id).click();
+                    a = document.querySelector('#successful-payment-'+id);
+                    a.href = "/makeappointment/"+id+"/"+date +"/"+time+"/";
+                    a.click();
                     alert("Payment Done!");
                 }
                 else{
