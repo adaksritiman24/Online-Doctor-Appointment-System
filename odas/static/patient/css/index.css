@@ -12,6 +12,10 @@ a{
     background:linear-gradient(rgb(25,135,84), rgb(222, 226, 224));
     padding:20px 0px;
     color: rgb(61, 37, 5);
+    animation: 2s ease-out 0s 1 forwards;
+}
+#app-brand{
+    color: rgb(225, 243, 252);
 }
 .banner-top{
     animation: 2s ease-in-out 0s 1 slideInFromTop forwards;
@@ -23,9 +27,31 @@ a{
     font-size: 3vh;
     list-style-type: none;
 }
+.our-services li{
+    padding: 3px;
+}
 
 .banner-bottom{
     animation: 2s ease-in-out 0s 1 slideInFromRight forwards;
+}
+.banner-inner{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+.banner-inner div{
+    margin: 10px;
+}
+#services{
+    padding: 2px;
+}
+.register-now{
+    font-weight: bold;
+    color: rgb(2, 114, 30);
+}
+.register-now:hover{
+    color: rgb(2, 71, 19);
 }
 .features{
     display: flex;
@@ -79,6 +105,16 @@ a{
     }
     100% {
       transform: translateY(0);
+      opacity: 1;
+    }
+}
+@keyframes ColorPop {
+    0% {
+      background: transparent;
+      opacity: 0;
+    }
+    100% {
+      background:linear-gradient(rgb(25,135,84), rgb(222, 226, 224));
       opacity: 1;
     }
 }

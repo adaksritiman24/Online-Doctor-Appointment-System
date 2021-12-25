@@ -4,20 +4,31 @@
 <div class="banner">
     <div class="container">
         <div class="banner-top">
-            <h1>Our Application Name</h1>
+            <h1 id="app-brand">Our Application Name</h1>
             <p>Welcome to a complete online doctor appointment and consultation system.
             Book your appointment with the best doctors around the world through our website.</p>
         </div>
         <div class="banner-bottom">
-            <ul class = "our-services">
-                <li><i class="bi bi-record-circle-fill"></i> Get the opportunity to book the best doctors at a very reasonable cost.</li>
-                <li><i class="bi bi-record-circle-fill"></i> Select your preferred date and time for the appointment</li>
-                <li><i class="bi bi-record-circle-fill"></i> Experience the easy process of appointment and consultation, avoiding the hassle of going to a clinic</li>
-                <li><i class="bi bi-record-circle-fill"></i> Consult your doctor through video call</li>
-                <li><i class="bi bi-record-circle-fill"></i> Upload your reports and download your prescriptions</li>
-            </ul>
+            <div class="banner-inner">
+                <div id = "services">
+                    <ul class = "our-services">
+                        <li><i class="bi bi-record-circle-fill"></i> Get the opportunity to book the best doctors at a very reasonable cost.</li>
+                        <li><i class="bi bi-record-circle-fill"></i> Select your preferred date and time for the appointment</li>
+                        <li><i class="bi bi-record-circle-fill"></i> Experience the easy process of appointment and consultation, avoiding the hassle of going to a clinic</li>
+                        <li><i class="bi bi-record-circle-fill"></i> Consult your doctor through video call</li>
+                        <li><i class="bi bi-record-circle-fill"></i> Upload your reports and download your prescriptions</li>
+                    </ul>
+                </div>
+                <div class="register-btn text-center">
+                    <a href="{% url 'pr' %}">
+                        <img src="{% static 'patient/imgs/index/first-aid-kit.png' %}" width="120px" alt="Not Found">
+                        <p class="register-now">Register Now</p>
+                    </a>
+                </div>
+            </div>
             <p class="gyan">Let your health be out responsibility</p>
         </div>
+        
     </div>
 </div>
 <div class="container">
