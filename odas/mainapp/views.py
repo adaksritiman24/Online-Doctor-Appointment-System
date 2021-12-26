@@ -147,7 +147,7 @@ def getTimesForParticularDay(request):
         q_date = datetime.strptime(date,"%Y-%m-%d").date()
         day = q_date.isoweekday()
         #get all appointment times for the date
-        appointments = Appointment.objects.filter(Q(date=q_date) & (Q(status="upcomming") | Q(status="ongoing")))
+        appointments = Appointment.objects.filter(Q(doctor_id=doctor_id) & Q(date=q_date) & (Q(status="upcomming") | Q(status="ongoing")))
         print(appointments)
         
         #get Doctor start and end times

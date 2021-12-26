@@ -1,7 +1,9 @@
 
-var showPayment=(charge, paypal_acc,id)=>{
-    var date = document.getElementById('date-for-doctor-'+id).innerHTML;
-    var time = document.getElementById('time-for-doctor-'+id).innerHTML;
+var showPayment=(charge, paypal_acc,id, date, time)=>{
+
+    // clear button section
+    document.getElementById('paypal-button-container-'+id).innerHTML="";
+
     console.log("Date is ",date);
     console.log(charge, paypal_acc, id, date, time);
     paypal.Buttons({

@@ -80,6 +80,7 @@ function showSelectedDateTime(id, date, time, time_formatted){
 
     let charge = document.getElementById("charge-for-doctor-"+id).innerHTML;
     let paypal = document.getElementById("paypal-for-doctor-"+id).innerHTML;
+    
     div.classList.add("d-flex");
     div.classList.add("justify-content-center");
     div.innerHTML = `
@@ -95,14 +96,12 @@ function showSelectedDateTime(id, date, time, time_formatted){
                 <li class="list-group-item">Total Amt. payble: <b>$${charge}</b></li>
             </ul>
             <div class="card-footer text-center">
-                <button onclick= \"showPayment('${charge}','${paypal}','${id}')\" class="btn btn-outline-success" id="pay-to-proceed-{{doctor.id}}">Proceed to Payment</button>
+                <button onclick= \"showPayment('${charge}','${paypal}','${id}','${date}','${time}')\" class="btn btn-outline-success" id="pay-to-proceed-{{doctor.id}}">Proceed to Payment</button>
             </div>
         </div>
     </div>
     `
     document.getElementById("payment-handler-for-"+id).scrollIntoView();
-    document.getElementById('date-for-doctor-'+id).innerText= date;
-    document.getElementById('time-for-doctor-'+id).innerText= time;
 
     // document.getElementById('pay-to-proceed-'+id).style.visibility="visible";
     

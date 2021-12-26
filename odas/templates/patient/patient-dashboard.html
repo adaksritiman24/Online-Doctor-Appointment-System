@@ -20,14 +20,16 @@
 
   <h3 class = "text-center">Available Doctors</h3>
   <hr>
-  <div class="row">
+  <div class="d-flex justify-content-center">
     {% for doctor in doctors %}
-    <div class="card" style="width: 18rem; margin:5px;">
+    <div class="card border-dark" style="width: 18rem; margin:5px;">
       <div class="card-body">
         <h5 class="card-title">Dr. {{doctor.first_name}} {{doctor.last_name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{doctor.speciality}}</h6>
         <p style="margin-top: 15px; margin-bottom:0px; padding:0px;">Availability</p>
         <hr style=" margin:4px; padding:0px;">
+
+        <!-- selectively show available days -->
         <div style="justify-content: center; align-items:center;">
           {% if doctor.sun_start %}
           <button disabled class="btn btn-primary btn-sm">Sun</button>
@@ -51,11 +53,14 @@
           <button disabled class="btn btn-primary btn-sm">Sat</button>
           {% endif %}
         </div>
+
         <p class="mt-2">Charges: Rs.{{doctor.charge}}/-</p>
           <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#payment-for-{{doctor.id}}">
             Book Appointment
           </button>
 
+          <!-- Appointment modal 
+          controls full appointment process for doctor-->
           <div class="modal fade" id="payment-for-{{doctor.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{doctor.id}}" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -89,9 +94,6 @@
                   <span style ="visibility: hidden;" id = "charge-for-doctor-{{doctor.id}}">{{doctor.charge}}</span>
                   <span style ="visibility: hidden;" id = "paypal-for-doctor-{{doctor.id}}">{{doctor.paypal}}</span>
 
-                  <span style ="visibility: hidden;" id = "date-for-doctor-{{doctor.id}}"></span>
-                  <span style ="visibility: hidden;" id = "time-for-doctor-{{doctor.id}}"></span>
-
                   <!-- to show selected date and time -->
                   <div id = "date-and-time-for-{{doctor.id}}"></div>
 
@@ -108,7 +110,7 @@
               </div>
             </div>
           </div>
-
+          <!-- end of appointment modal -->
 
       </div>
     </div>
