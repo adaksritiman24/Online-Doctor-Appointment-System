@@ -77,6 +77,11 @@ a{
 .feature-card div{
     padding: 60px 0px;
 }
+
+.selected-date-time p{
+    text-align: center;
+}
+
 @keyframes slideInFromTop {
     0% {
       transform: translateY(-100%);

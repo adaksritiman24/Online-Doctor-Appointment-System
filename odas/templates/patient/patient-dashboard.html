@@ -64,12 +64,9 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-
-
-                  Total Amount Payable: ₹{{doctor.charge}}/-
                   
-                  <p>Select A Date</p>
+                  <h3 class="text-center">Select A Date For Appointment</h3>
+                  <hr>
                   <div class="text-center">
                     <input type="date" id = "app-date-for-{{doctor.id}}">
                     <button onclick="dateForAppointment('{{doctor.id}}')" class="btn btn-outline-warning">Confirm</button>
@@ -88,7 +85,6 @@
 
                   <div id = "date-and-time-for-{{doctor.id}}"></div>
 
-                  <button onclick="showPayment('{{doctor.charge}}','{{doctor.paypal}}','{{doctor.id}}')" class="btn btn-info btn-sm" id="pay-to-proceed-{{doctor.id}}" style="visibility: hidden;">Pay to proceed</button>
                   <div class="mt-5" id = paypal-button-container-{{doctor.id}}></div>
                 </div>
                 <div class="modal-footer">
