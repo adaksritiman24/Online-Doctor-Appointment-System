@@ -81,7 +81,9 @@ a{
 .selected-date-time p{
     text-align: center;
 }
-
+.bg-custom-sg{
+    background-color: rgb(24, 238, 70);
+}
 @keyframes slideInFromTop {
     0% {
       transform: translateY(-100%);

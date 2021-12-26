@@ -67,7 +67,8 @@ function showFailure(target, id){
     div = document.getElementById("date-and-time-for-"+id);
     div.innerHTML="";
     head = document.createElement('h3');
-    head.innerText = "Not Available on that particular day !";
+    head.classList.add("text-danger");
+    head.innerHTML = `<i class="bi bi-emoji-frown"></i><br>Not Available on this day!`;
     target.appendChild(head);
 }
 
@@ -82,16 +83,16 @@ function showSelectedDateTime(id, date, time, time_formatted){
     div.classList.add("d-flex");
     div.classList.add("justify-content-center");
     div.innerHTML = `
-    <div class="card" style="width: 18rem;" id="payment-handler-for-${id}">
-        <div class="card-header">
+    <div class="card border-primary" style="width: 20rem;" id="payment-handler-for-${id}">
+        <div class="card-header bg-primary text-white">
             <h5 class="card-title text-center">Selected date and Time</h5>
         </div>
 
         <div class="card-body">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><i class="bi bi-calendar2-event"></i> ${date}</li>
-                <li class="list-group-item"><i class="bi bi-clock"></i> ${time_formatted}</li>
-                <li class="list-group-item">Total Amt. payble: $${charge}</li>
+                <li class="list-group-item text-primary"><i class="bi bi-calendar2-event"></i> <b> ${date}</b></li>
+                <li class="list-group-item text-primary"><i class="bi bi-clock"></i><b> ${time_formatted}</b></li>
+                <li class="list-group-item">Total Amt. payble: <b>$${charge}</b></li>
             </ul>
             <div class="card-footer text-center">
                 <button onclick= \"showPayment('${charge}','${paypal}','${id}')\" class="btn btn-outline-success" id="pay-to-proceed-{{doctor.id}}">Proceed to Payment</button>
