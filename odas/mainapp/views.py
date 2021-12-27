@@ -85,11 +85,14 @@ def PatientAppointmentPage(request):
         "end" : timezone.make_aware(datetime.now() + timedelta(minutes=30)),
     }
     appointments = Appointment.objects.filter(patient = request.user)
+    app_over = appointments.filter(Q(date_time_end__lt = current['start']))
+    app_active = appointments.filter(Q(date_time_end__gte = current['start']) & Q(date_time_start__lte = current['start']))
+    app_upcomming = appointments.filter(Q(date_time_start__gt = current['start']))
 
-    
     context = {
-        'appointments': appointments,
-        'current' : current,
+        'app_over':app_over,
+        'app_active': app_active,
+        'app_upcomming': app_upcomming,
     }
     return render(request,"patient/patient-appointment.html",context= context)
 

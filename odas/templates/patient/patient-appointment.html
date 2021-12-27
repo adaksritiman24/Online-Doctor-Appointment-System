@@ -12,11 +12,12 @@
           </button>
         </h2>
         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
-          <div class="accordion-body">
+          <div class="accordion-body" id="app-schedule-over">
 
             <!-- completed appointments -->
-            {% for appointment in appointments %}
-              {% if appointment.date_time_end < current.start %}
+            {% if app_over %}
+            {% for appointment in app_over %}
+            
                 <div class="card m-3">
                   <div class="card-header">
                     Appointment No. {{appointment.id}}
@@ -24,11 +25,14 @@
                   <div class="card-body">
                     <h5 class="card-title">Date: {{appointment.date}}, Time: {{appointment.time}}</h5>
                     <p class="card-text">Appointment with Dr. {{appointment.doctor.first_name}} {{appointment.doctor.last_name}} on {{appointment.date}}</p>
-                    <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-secondary disabled" target="_blank">Appointment Over</a>
+                    <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-secondary disabled" target="_blank">Appointment is Over</a>
                   </div>
                 </div>
-              {% endif %}
+
             {% endfor %}
+            {% else %}
+                <div><p>No Appointments</p></div>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -40,23 +44,33 @@
           </button>
         </h2>
         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
-          <div class="accordion-body">
+          <div class="accordion-body" id="app-schedule-active">
 
             <!-- active appointments -->
-            {% for appointment in appointments %}
-              {% if appointment.date_time_end >= current.start and appointment.date_time_start <= current.start %}
+            {% if app_active %}
+            {% for appointment in app_active %}
                 <div class="card m-3 border-danger">
                   <div class="card-header">
-                    Appointment No. {{appointment.id}}
+                    Appointment No. {{appointment.id}} <span class="text-danger m-4"><i class="bi bi-record-circle"></i><b> Active Now</b></span>
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title">Date: {{appointment.date}}, Time: {{appointment.time}}</h5>
-                    <p class="card-text">Appointment with Dr. {{appointment.doctor.first_name}} {{appointment.doctor.last_name}} on {{appointment.date}}</p>
-                    <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-success" target="_blank">Start Appointment</a>
-                  </div>
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h5 class="card-title">Date: {{appointment.date}}, Time: {{appointment.time}}</h5>
+                        <p class="card-text">Appointment with Dr. {{appointment.doctor.first_name}} {{appointment.doctor.last_name}} on {{appointment.date}}</p>
+                        <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-success" target="_blank">Start Appointment</a>       
+                      </div>
+                      <div class="col-md-4">
+                        <p><u><small>Email:</small> <b>{{appointment.doctor.email}}</b> </u></p>
+                        <p><u><small>Contact no:</small> <b>{{appointment.doctor.contact}}</b></u></p>
+                      </div>
+                    </div>
+                    </div>
                 </div>
-              {% endif %}
             {% endfor %}
+            {% else %}
+                <div><p>No Appointments</p></div>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -68,10 +82,11 @@
           </button>
         </h2>
         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
-          <div class="accordion-body">
+          <div class="accordion-body" id="app-schedule-upcomming">
             <!-- for upcomming appointments -->
-            {% for appointment in appointments %}
-              {% if appointment.date_time_start > current.start %} 
+            {% if app_upcomming %}
+            {% for appointment in app_upcomming %}
+
                 <div class="card m-3 border-primary">
                   <div class="card-header bg-primary text-white">
                     Appointment No. {{appointment.id}}
@@ -82,8 +97,10 @@
                     <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-primary disabled" target="_blank">Upcomming</a>
                   </div>
                 </div>
-              {% endif %}
             {% endfor %}
+            {% else %}
+                <div><p>No Appointments</p></div>
+            {% endif %}
           </div>
         </div>
       </div>
