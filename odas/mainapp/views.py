@@ -9,6 +9,7 @@ from .models import Appointment
 from datetime import date, datetime, timedelta
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q 
+from django.utils import timezone
 # Create your views here.
 
 class PatientDashboard(View):
@@ -68,16 +69,27 @@ def makeAppointment(request, doctorid, date, time):
     time = datetime.strptime(time, '%H:%M').time()
     doctor = Doctor.objects.get(pk = doctorid)
     patient = Patient.objects.get(pk = request.user.id)
-    appointment = Appointment(patient = patient, doctor = doctor, date=date, time=time, status="upcomming") 
+
+    app_start_time = datetime.combine(date=date, time=time)
+    app_end_time = timezone.make_aware(app_start_time+timedelta(minutes=30))
+
+    appointment = Appointment(patient = patient, doctor = doctor, date=date, time=time, date_time_start = app_start_time, date_time_end = app_end_time, status="upcomming") 
     appointment.save()
 
     return redirect('/appointments/patient/')
 
 
 def PatientAppointmentPage(request):
+    current = {
+        "start" : timezone.make_aware(datetime.now()),
+        "end" : timezone.make_aware(datetime.now() + timedelta(minutes=30)),
+    }
     appointments = Appointment.objects.filter(patient = request.user)
+
+    
     context = {
         'appointments': appointments,
+        'current' : current,
     }
     return render(request,"patient/patient-appointment.html",context= context)
 
