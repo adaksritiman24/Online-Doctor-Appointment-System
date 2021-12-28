@@ -1,4 +1,5 @@
 from django.http.response import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.views import View
 from .forms import PatientRegistrationForm, DoctorRegistrationForm
@@ -90,18 +91,19 @@ class DoctorRegistration(View):
 
 class PatientLogin(View):
     
-    def get(self, request):
-        if not request.user.is_authenticated:
-            context = {
+    # def get(self, request):
+    #     if not request.user.is_authenticated:
+    #         context = {
                 
-            }
-            return render(request,"patient/patient-login.html",context=context)
-        return redirect('/dashboard/patient/')
+    #         }
+    #         return render(request,"patient/patient-login.html",context=context)
+    #     return redirect('/dashboard/patient/')
 
 
     def post(self, request):
         username = request.POST['username']
         password = request.POST['password']
+        next = request.POST.get('next','/')
 
         print(username)
         user = authenticate(username = username, password=password)
@@ -112,7 +114,7 @@ class PatientLogin(View):
                 return redirect('/dashboard/patient/')
 
         messages.error(request, "Invalid Credentials!")
-        return redirect('/accounts/login/patient/')
+        return redirect(next)
 
 
 class DoctorLogin(View):

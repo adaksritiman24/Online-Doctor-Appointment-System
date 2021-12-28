@@ -21,18 +21,21 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#"><b>O. D. A. S.</b></a>
+        <a class="navbar-brand" href="{% url 'index' %}"><b>O. D. A. S.</b></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
+            {% if not request.user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'pr' %}">Sign Up</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'pl' %}">Login</a>
-            </li>
+            
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#LoginModal" id="login-btn">
+              Login
+            </button>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'pd' %}">DashBoard</a>
             </li>
@@ -42,11 +45,14 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout_p' %}">Logout</a>
             </li>
+            {% endif %}
           </ul>
         </div>
       </div>
     </nav>
     <div style="height: 60px; background-color: rgb(25,135,84);"></div>
+    
+
     {% block content %}
     {% endblock %}
 
@@ -64,5 +70,79 @@
     <script src="{% static 'payments/payment.js' %}" type="text/javascript"></script>
     <script src="{% static 'patient/js/main.js' %}"></script>
     <script src="{% static 'patient/js/extends.js' %}"></script>
+    
   </body>
 </html>
+
+<!-- modal for login -->
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-white" id="LoginModalLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+        <form action="{% url 'pl' %}" method="post">
+          {% csrf_token %}
+          <div class="modal-body">
+            <table>
+                <tbody>
+                    <tr>
+                      <input type="hidden" name="next" value="{{ request.path }}">
+                    </tr>
+                    <tr class="m-2">
+                        <td>
+                            Username :
+                        </td>
+                        <td>
+                            <input type="text" name="username" class="form-control m-2" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Password :
+                        </td>
+                        <td>
+                            <input type="password" name="password" class="form-control m-2" required>
+                        </td>
+                    </tr>
+        
+                    <tr>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            {% for message in messages %}
+              <div class="text-danger">{{message}}</div>
+            {% endfor %}
+          
+            <div class="modal-footer">
+              <input type="submit" value="Login" class="btn btn-success">
+            </div>
+          </div>
+        </form>  
+      </div>
+    </div>
+  </div>
+</div>
+
+{% for message in messages %}
+    {% if message.tags == "error" %}
+    <script>
+      var message ="{{message}}";
+      if(message === "Invalid Credentials!"){
+        console.log("Error in logging");
+        $(document).ready(function(){
+          $('#login-btn').click();
+        })
+      }
+    </script>
+    {% endif %}
+{% endfor %}
