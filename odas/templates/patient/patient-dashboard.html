@@ -1,5 +1,5 @@
 {% extends "patient/base.html" %}
-
+{% load static %}
 {% block content %}
 <div class="container">
   <div>
@@ -24,8 +24,27 @@
     {% for doctor in doctors %}
     <div class="card border-dark" style="width: 18rem; margin:5px;">
       <div class="card-body">
-        <h5 class="card-title">Dr. {{doctor.first_name}} {{doctor.last_name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{doctor.speciality}}</h6>
+
+        <!-- image section -->
+        <div class="d-flex justify-content-center">
+        {% if doctor.img %}
+        
+          <img src="{{doctor.img.url}}" alt="Not Found" width="100px", height="100px" style="border-radius: 50%;">
+        
+        {% else %}
+          {% if doctor.gender == "Female" %}
+          <img src="{% static 'doctor/imgs/avatar/female-doc.jpg' %}" alt="Not Found" width="100px", height="100px" style="border-radius: 50%;">
+
+          {% else %}
+          <img src="{% static 'doctor/imgs/avatar/male-doc.png' %}" alt="Not Found" width="100px", height="100px" style="border-radius: 50%;">
+
+          {% endif %}
+
+        {% endif %}
+        </div>
+
+        <h5 class="card-title text-center">Dr. {{doctor.first_name}} {{doctor.last_name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center">{{doctor.speciality}}</h6>
         <p style="margin-top: 15px; margin-bottom:0px; padding:0px;">Availability</p>
         <hr style=" margin:4px; padding:0px;">
 

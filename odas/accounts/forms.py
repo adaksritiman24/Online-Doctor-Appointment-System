@@ -32,9 +32,9 @@ class DoctorRegistrationForm(UserCreationForm):
     class Meta:
         model = Doctor
         fields = ['first_name','last_name','gender','dob','contact','username','email','speciality','bio','yoe',
-        'charge','paypal','sun_start','sun_end','mon_start','mon_end','tue_start','tue_end','wed_start','wed_end',
+        'charge','paypal','img','sun_start','sun_end','mon_start','mon_end','tue_start','tue_end','wed_start','wed_end',
         'thu_start','thu_end','fri_start','fri_end','sat_start','sat_end']
-
+        
         widgets = {
             'dob' : DateInput(),
             'username': forms.TextInput(attrs={'class':'form-control'}),
@@ -46,8 +46,8 @@ class DoctorRegistrationForm(UserCreationForm):
             'yoe': forms.TextInput(attrs={'class':'form-control'}),
             'charge': forms.TextInput(attrs={'class':'form-control'}),
             'paypal': forms.EmailInput(attrs={'class':'form-control'}),
-
             'speciality': forms.Select(attrs={'class':'form-control'}),
+            'img' : forms.FileInput(attrs={'class':'form-control'}),
 
             'sun_start':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
             'sun_end':forms.TimeInput(format='%H:%M',attrs={'type': 'time','required': False}),
