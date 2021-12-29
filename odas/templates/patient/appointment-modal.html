@@ -1,0 +1,55 @@
+<!-- Appointment modal 
+          controls full appointment process for doctor-->
+<div class="modal fade" id="payment-for-{{doctor.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{doctor.id}}"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="exampleModalLabel{{doctor.id}}">Appointment with Dr. {{doctor.first_name}}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h3 class="text-center">Select A Date For Appointment</h3>
+                <hr>
+
+                <!-- date quering -->
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <input class="form-control border-dark" type="date" id="app-date-for-{{doctor.id}}">
+                    </div>
+                    <div class="text-center">
+                        <button onclick="dateForAppointment('{{doctor.id}}')" class="btn btn-dark m-2">Check
+                            Availability</button>
+                    </div>
+                </div>
+
+                <!-- div where the available times will be shown -->
+                <div id="available-times-for-{{doctor.id}}" class="text-center"></div>
+
+                <!-- link to call the django view of fixing Appointment after payment is done 
+                  this will be called through javascript-->
+                <a href="#" id="successful-payment-{{doctor.id}}" style="visibility: hidden;"></a>
+
+                <!-- some information kept hidden -->
+                <span style="visibility: hidden;" id="charge-for-doctor-{{doctor.id}}">{{doctor.charge}}</span>
+                <span style="visibility: hidden;" id="paypal-for-doctor-{{doctor.id}}">{{doctor.paypal}}</span>
+
+                <!-- to show selected date and time -->
+                <div id="date-and-time-for-{{doctor.id}}"></div>
+
+                <!-- paypal button for payment -->
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="mt-5" id=paypal-button-container-{{doctor.id}}></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of appointment modal -->
