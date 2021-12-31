@@ -186,3 +186,11 @@ def getTimesForParticularDay(request):
             'available': available_slots
         }
     return JsonResponse(response)
+
+# view prescription------------------------------------------
+def viewPrescription(request, app_no):
+    appointment = Appointment.objects.get(pk = app_no)
+    context = {
+        "appointment" : appointment,
+    }
+    return render( request, 'prescription/viewer.html', context=context)

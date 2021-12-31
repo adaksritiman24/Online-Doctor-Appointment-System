@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'mainapp',
 ]
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -17,7 +17,7 @@ class Appointment(models.Model):
     date_time_start = models.DateTimeField(null=True, blank=True)
     date_time_end = models.DateTimeField(null=True, blank=True)
     status = models.CharField(null = True, blank = True, max_length=20, choices=STATUS)
-
+    prescription = models.FileField(upload_to='prescriptions/%Y/%m/%d', null=True, blank=True)
 
 
     

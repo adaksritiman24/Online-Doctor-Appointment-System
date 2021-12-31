@@ -20,4 +20,7 @@ urlpatterns = [
 
     #doctor-appointment
     path('appointments/doctor/',views.DoctorAppointmentPage, name="d_app"),
+
+    #view prescription
+    path('appointment/prescriptions/view/<int:app_no>/', views.viewPrescription, name = "vp"),
 ]
