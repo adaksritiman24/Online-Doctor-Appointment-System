@@ -17,7 +17,7 @@
                 <!-- date quering -->
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
-                        <input class="form-control border-dark" type="date" id="app-date-for-{{doctor.id}}">
+                        <input class="form-control border-dark" type="date" id="app-date-for-{{doctor.id}}" min="0" onclick="setMinDate(event)">
                     </div>
                     <div class="text-center">
                         <button onclick="dateForAppointment('{{doctor.id}}')" class="btn btn-dark m-2">Check
