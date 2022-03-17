@@ -1,0 +1,51 @@
+{% extends 'patient/base.html'%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 ">
+        
+            <form action="" method="POST" class="edit-user-form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-12"><h3>Change your details</h3></div>
+                </div>
+                <div class="row">
+                    <div>First Name</div>
+                    <div class="col-md-12">{{form.first_name}}</div>
+                </div>
+                <div class="row">
+                    <div>Last Name</div>
+                    <div class="col-md-12">{{form.last_name}}</div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-5">
+                        <div>Date Of Birth</div>
+                        {{form.dob}}
+                    </div>
+                    <div class="col-md-2">
+                        <div>Gender</div>
+                        {{form.gender}}
+                    </div>
+                    <div class="col-md-5">
+                        <div>Contact No.</div>
+                        {{form.contact}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary btn-update">Confirm Update</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-4 ">
+            <h3>Your reports</h3>
+            <hr>
+            <h3>Upload reports</h3>
+        </div>
+    </div>
+</div>
+{% endblock %}

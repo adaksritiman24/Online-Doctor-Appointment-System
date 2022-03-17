@@ -1,0 +1,17 @@
+.edit-user-form {
+    background-color: #eee;
+    padding: 12px 3px;
+    margin-top: 9px;
+    border-radius: 8px;
+}
+
+.edit-user-form > div{
+    margin: 20px;
+}
+
+.edit-user-form > .row > div {
+    margin: 5px 0px;
+}
+
+.btn-update {
+}

@@ -20,10 +20,12 @@ from django.conf import settings
 import accounts
 import mainapp
 import chat
+import edit
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include("accounts.urls")),
     path("",include('mainapp.urls')),
     path("chat/", include('chat.urls')),
+    path('edit/', include('edit.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
