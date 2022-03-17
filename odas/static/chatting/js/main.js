@@ -89,7 +89,7 @@ btnJoin.addEventListener('click', ()=>{
     labelUsername.innerHTML = username;
 
     var loc = window.location;
-    var wsStart = "wss://";
+    var wsStart = "ws://";
     
     if(loc.protocol== "https"){
         wsStart = "wss://";

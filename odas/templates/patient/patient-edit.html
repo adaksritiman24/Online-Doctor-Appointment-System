@@ -2,13 +2,23 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
+    <div class="row m-2">
+        <div class="col-md-6 offset-3">
+            {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        
         <div class="col-md-7 ">
         
             <form action="" method="POST" class="edit-user-form">
+                <input type="text" name="type" hidden value="user">
                 {% csrf_token %}
                 <div class="row">
-                    <div class="col-md-12"><h3>Change your details</h3></div>
+                    <div class="col-md-12"><h3>Update your details</h3></div>
                 </div>
                 <div class="row">
                     <div>First Name</div>
@@ -42,9 +52,36 @@
 
         </div>
         <div class="col-md-4 ">
-            <h3>Your reports</h3>
-            <hr>
-            <h3>Upload reports</h3>
+            <div class="report-sec">
+                <h3 >Your reports</h3>
+                {% for report in reports %}
+                <div class="report-each">
+                    <a href="{{report.report.url}}">{{report.name}}</a>
+                    <a href="{% url 'vr' report.id %}" target="_blank">View this Report</a>
+                </div>
+                    
+                {% endfor %}
+                <hr>
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" name="type" hidden value="report" >
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label"><h4>Select Reports to upload</h4></label>
+                            <input class="form-control" type="file" id="formFile" name="report">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3">
+                            <input class="form-control" type="text" placeholder="Description of the report" name="description">
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:flex-end;">
+                        <button type="submit" class="btn btn-info btn-update-2" >Upload</button>
+                    </div>
+                    
+                </form>
+            </div>
         </div>
     </div>
 </div>

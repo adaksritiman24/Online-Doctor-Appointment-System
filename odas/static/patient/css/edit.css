@@ -15,3 +15,28 @@
 
 .btn-update {
 }
+
+.report-each{
+    border: 1px solid #eee;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 5px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.report-each >a:first-child{
+    text-decoration: none;
+    color: black;
+
+    font-weight: bold;
+}
+
+.report-sec{
+    background-color: rgb(250, 217, 217);
+    margin: 6px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}

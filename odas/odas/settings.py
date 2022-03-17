@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'channels',
     'accounts',
     'mainapp',
+    'edit',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
