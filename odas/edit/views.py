@@ -21,8 +21,10 @@ class PatientEditPage(View):
             if fm.is_valid():
                 fm.save()
                 print("updated")
+                messages.success(request, "Details Updated Sussessfully!")
                 return redirect('/edit/patient/')
-            return HttpResponse("Unable to Proceed!"); 
+            messages.error(request, "Coudn't update details!")    
+            return redirect('/edit/patient/')
         else:
             try:
                 report = request.FILES['report']    
@@ -30,6 +32,7 @@ class PatientEditPage(View):
                 
                 report = Report(patient=patient, report= report, name = description)
                 report.save();
+                messages.success(request, "Report Uploaded Sussessfully!")
                 return redirect('/edit/patient/')
             except Exception:
                 messages.error(request, "Coudn't Upload Report!")

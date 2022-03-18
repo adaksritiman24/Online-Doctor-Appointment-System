@@ -40,3 +40,11 @@
     padding: 10px;
     border-radius: 5px;
 }
+
+.alert-m-error {
+    background-color: rgb(248, 200, 180);
+}
+
+.alert-m-success {
+    background-color: rgb(176, 247, 129);
+}
