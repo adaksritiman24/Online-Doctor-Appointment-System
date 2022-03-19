@@ -10,6 +10,7 @@ from datetime import date, datetime, timedelta
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q 
 from django.utils import timezone
+from django.core.files.storage import FileSystemStorage
 # Create your views here.
 
 class PatientDashboard(View):
@@ -80,14 +81,11 @@ def makeAppointment(request, doctorid, date, time):
 
 
 def PatientAppointmentPage(request):
-    current = {
-        "start" : timezone.make_aware(datetime.now()),
-        "end" : timezone.make_aware(datetime.now() + timedelta(minutes=30)),
-    }
+    currentTime =  timezone.make_aware(datetime.now())
     appointments = Appointment.objects.filter(patient = request.user)
-    app_over = appointments.filter(Q(date_time_end__lt = current['start']))
-    app_active = appointments.filter(Q(date_time_end__gte = current['start']) & Q(date_time_start__lte = current['start']))
-    app_upcomming = appointments.filter(Q(date_time_start__gt = current['start']))
+    app_over = appointments.filter(Q(date_time_end__lt = currentTime))
+    app_active = appointments.filter(Q(date_time_end__gte = currentTime) & Q(date_time_start__lte = currentTime))
+    app_upcomming = appointments.filter(Q(date_time_start__gt = currentTime))
 
     context = {
         'app_over':app_over,
@@ -96,13 +94,37 @@ def PatientAppointmentPage(request):
     }
     return render(request,"patient/patient-appointment.html",context= context)
 
+class DoctorAppointmentPage(View):
 
-def DoctorAppointmentPage(request):
-    appointments = Appointment.objects.filter(doctor = request.user)
-    context = {
-        'appointments': appointments,
-    }
-    return render(request,"doctor/doctor-appointment.html",context= context)
+    def get(self,request):
+        currentTime = timezone.make_aware(datetime.now())
+        appointments = Appointment.objects.filter(doctor = request.user)
+        app_over = appointments.filter(Q(date_time_end__lt = currentTime))
+        app_active = appointments.filter(Q(date_time_end__gte = currentTime) & Q(date_time_start__lte = currentTime))
+        app_upcomming = appointments.filter(Q(date_time_start__gt = currentTime))
+        context = {
+            'appointments': appointments,
+            'app_over' : app_over,
+            'app_active' : app_active,
+            'app_upcomming' : app_upcomming
+        }
+        return render(request,"doctor/doctor-appointment.html",context= context)
+
+    def post(self, request):
+        try:
+            appointmentNumber = int(request.POST['appNo'])
+            prescriptionFile = request.FILES[f'p-file-{appointmentNumber}']
+            fs = FileSystemStorage('media/prescriptions/')
+            file = fs.save(prescriptionFile.name, prescriptionFile)
+
+            Appointment.objects.filter(id=appointmentNumber).update(prescription = 'prescriptions/'+file)
+
+        except Exception as e: 
+            print(e)  
+            pass 
+        return redirect('/appointments/doctor/')    
+
+
 
 #date and time selection---------------------------------------
 

@@ -1,0 +1,14 @@
+<div class="col-md-4">
+    {% if appointment.prescription %}
+    <a href="{% url 'vp' appointment.id %}" target="_blank">View Prescription</a>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        <input type="text" name="appNo" value="{{appointment.id}}" hidden id="">
+    {% csrf_token %}
+    <div><u><b>Upload Prescription</b></u></div>
+    <div class="d-flex">
+        <input class="form-control m-2" type="file" name="p-file-{{appointment.id}}" required>
+        <input type="submit" class = "btn btn-success btn-sm m-2" value="Upload" >
+    </div> 
+    </form>
+</div>

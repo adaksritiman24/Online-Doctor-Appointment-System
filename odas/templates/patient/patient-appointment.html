@@ -71,6 +71,9 @@
                         <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-success" target="_blank">Start Appointment</a>       
                       </div>
                       <div class="col-md-4">
+                        {% if appointment.prescription %}
+                        <a href="{% url 'vp' appointment.id %}" target="_blank">View Prescription</a>
+                        {% endif %}
                         <p><u><small>Email:</small> <b>{{appointment.doctor.email}}</b> </u></p>
                         <p><u><small>Contact no:</small> <b>{{appointment.doctor.contact}}</b></u></p>
                       </div>

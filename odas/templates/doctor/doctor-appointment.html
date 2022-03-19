@@ -1,24 +1,116 @@
-{% extends "doctor/base.html" %}
+{% extends "patient/base.html" %}
 
 {% block content %}
 <div class="container">
+  <div class="row mt-4"> 
+    <div class="accordion" id="accordionPanelsStayOpenExample">
 
-<div class="row mt-4">    
-{% for appointment in appointments %}
+      <div class="accordion-item mb-2">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+          <button class="accordion-button collapsed bg-secondary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+            <b>Completed Appointments</b>
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+          <div class="accordion-body" id="app-schedule-over">
 
-<div class="card m-3">
-    <div class="card-header">
-      Appointment No. {{appointment.id}}
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Date: {{appointment.date}}</h5>
-      <p class="card-text">Appointment with {{appointment.patient.first_name}} {{appointment.patient.last_name}} on {{appointment.date}}</p>
-      <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-primary" target="_blank">Start Appointment</a>
-    </div>
-  </div>
+            <!-- completed appointments -->
+            {% if app_over %}
+            {% for appointment in app_over %}
+            
+                <div class="card m-3">
+                  <div class="card-header">
+                    Appointment No. {{appointment.id}}
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h5 class="card-title">Date: {{appointment.date}}, Time: {{appointment.time}}</h5>
+                        <p class="card-text">Appointment with {{appointment.patient.first_name}} {{appointment.patient.last_name}} on {{appointment.date}}</p>
+                        <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-secondary" target="_blank">Appointment is Over</a>
+                      </div>
+                      {% include 'doctor/prescription-control.html'%}
+                    </div>
 
-{% endfor %}
+                  </div>
+                </div>
+
+            {% endfor %}
+            {% else %}
+                <div><p>No Appointments</p></div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item mb-2">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+          <button class="accordion-button bg-danger text-white" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+            <b>Active Appointments</b>
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+          <div class="accordion-body" id="app-schedule-active">
+
+            <!-- active appointments -->
+            {% if app_active %}
+            {% for appointment in app_active %}
+                <div class="card m-3 border-danger">
+                  <div class="card-header">
+                    Appointment No. {{appointment.id}} <span class="text-danger m-4"><i class="bi bi-record-circle"></i><b> Active Now</b></span>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h5 class="card-title">Date: {{appointment.date}}, Time: {{appointment.time}}</h5>
+                        <p class="card-text">Appointment with {{appointment.patient.first_name}} {{appointment.patient.last_name}} on {{appointment.date}}</p>
+                        <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-success" target="_blank">Start Appointment</a>       
+                      </div>
+                      {% include 'doctor/prescription-control.html'%}
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% else %}
+                <div><p>No Appointments</p></div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+          <button class="accordion-button bg-primary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+            <b>Upcomming Appointments</b>
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+          <div class="accordion-body" id="app-schedule-upcomming">
+
+            <!-- for upcomming appointments -->
+            {% if app_upcomming %}
+            {% for appointment in app_upcomming %}
+
+                <div class="card m-3 border-primary">
+                  <div class="card-header bg-primary text-white">
+                    Appointment No. {{appointment.id}}
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Date: {{appointment.date}}, Time: {{appointment.time}}</h5>
+                    <p class="card-text">Appointment with {{appointment.patient.first_name}} {{appointment.patient.last_name}} on {{appointment.date}}</p>
+                    <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-primary disabled" target="_blank">Upcomming</a>
+                  </div>
+                </div>
+            {% endfor %}
+            {% else %}
+                <div><p>No Appointments</p></div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+    </div>  
+  </div>   
 </div>
 
-</div>
 {% endblock %}
