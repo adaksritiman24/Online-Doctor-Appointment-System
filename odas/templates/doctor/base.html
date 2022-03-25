@@ -21,12 +21,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
+            {% if not request.user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'dr' %}">Sign Up</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'dl' %}">Login</a>
             </li>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'dd' %}">DashBoard</a>
             </li>
@@ -34,8 +36,12 @@
               <a class="nav-link" href="{% url 'd_app' %}">Appointments</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'd_edit' %}">Edit Details</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'logout_d' %}">Logout</a>
             </li>
+            {% endif %}
           </ul>
         </div>
       </div>

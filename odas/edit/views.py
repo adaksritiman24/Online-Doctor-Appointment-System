@@ -2,9 +2,13 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
+
 from .models import Report
 from .forms import PatientEditForm
+from .forms import DoctorEditForm
 from accounts.models import Patient
+from accounts.models import Doctor
+
 # Create your views here.
 
 class PatientEditPage(View):
@@ -45,3 +49,9 @@ def viewReport(request, rep_no):
         "report" : report,
     }
     return render( request, 'reports/viewer.html', context=context)
+
+class DoctorEditPage(View):
+    def get(self, request):
+        doctor = Doctor.objects.get(pk=request.user.id)
+        fm = DoctorEditForm(instance = doctor)
+        return render(request, "doctor/doctor-edit.html", {"form" : fm})

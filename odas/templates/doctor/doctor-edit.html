@@ -1,0 +1,122 @@
+{% extends 'doctor/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-6 offset-md-3">
+        <h1>Edit Your Details</h1>
+        <div class="row">
+            <di class="col-md-6">
+                <span>First Name: </span>
+                {{form.first_name}}
+            </di>
+            <di class="col-md-6">
+                <span>Last Name: </span>
+                {{form.last_name}}
+            </di>
+        </div>
+        <div class="row">
+            <di class="col-md-4">
+                <span>Gender: </span>
+                {{form.gender}}
+            </di>
+            <di class="col-md-4">
+                <span>Date Of Birth: </span>
+                {{form.dob}}
+            </di>
+            <di class="col-md-4">
+                <span>Contact: </span>
+                {{form.contact}}
+            </di>
+        </div>
+        <div class="row">
+            <di class="col-md-9">
+                <span>Speciality: </span>
+                {{form.speciality}}
+            </di>
+
+            <di class="col-md-3">
+                <span>Years of Experience: </span>
+                {{form.yoe}}
+            </di>
+        </div>
+        
+        <div class="row">
+            <di class="col-md-5">
+                <span>Paypal Account: </span>
+                {{form.paypal}}
+            </di>
+
+            <di class="col-md-5">
+                <span>Charges: </span>
+                {{form.charge}}
+            </di>
+        </div>
+        <div class="row">
+            <di class="col-md-12">
+                <span>Bio: </span>
+                {{form.bio}}
+            </di>
+        </div>
+        <div class="row">
+            <di class="col-md-12">
+                <span>Profile Picture: </span>
+                {{form.img}}
+            </di>
+        </div>
+
+        <!-- dates -->
+        <div class="row m-4">
+            <h2>Availability</h2>
+            <hr>
+
+
+            <div class="col-md-6">
+                Sunday Start: {{form.sun_start}}
+            </div>
+            <div class="col-md-6">
+                Sunday End: {{form.sun_end}}
+            </div>
+            <div class="col-md-6">
+                Monday Start: {{form.mon_start}}
+            </div>
+            <div class="col-md-6">
+                Monday End: {{form.mon_end}}
+            </div>
+            <div class="col-md-6">
+                Tuesday Start: {{form.tue_start}}
+            </div>
+            <div class="col-md-6">
+                Tuesday End: {{form.tue_end}}
+            </div>
+            <div class="col-md-6">
+                Wednesday Start: {{form.wed_start}}
+            </div>
+            <div class="col-md-6">
+                Wednesday End: {{form.wed_end}}
+            </div>
+            <div class="col-md-6">
+                Thursday Start: {{form.thu_start}}
+            </div>
+            <div class="col-md-6">
+                Thursday End: {{form.thu_end}}
+            </div>
+            <div class="col-md-6">
+                Friday Start: {{form.fri_start}}
+            </div>
+            <div class="col-md-6">
+                Friday End: {{form.fri_end}}
+            </div>
+            <div class="col-md-6">
+                Saturday Start: {{form.sat_start}}
+            </div>
+            <div class="col-md-6">
+                Saturday End: {{form.sat_end}}
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-primary">Update</button>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
