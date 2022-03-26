@@ -1,0 +1,25 @@
+
+.alert-m-error {
+    background-color: rgb(248, 200, 180);
+}
+
+.alert-m-success {
+    background-color: rgb(176, 247, 129);
+}
+
+#edit-form{
+    border: 1px solid rgb(201, 200, 200);
+    box-shadow: 0px 1px 17px 2px rgb(192, 192, 192);
+    border-radius: 8px;
+    padding: 14px;
+    margin: 15px;
+}
+.dates-container > div {
+    display: flex;
+    justify-content: space-between;
+}
+#update-btn{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0px 15px;
+}

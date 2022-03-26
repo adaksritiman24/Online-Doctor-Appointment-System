@@ -1,9 +1,19 @@
 {% extends 'doctor/base.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="col-md-6 offset-md-3">
-        <h1>Edit Your Details</h1>
+<div class="container mb-4">
+    <div class="col-md-8 offset-md-2">
+        <div>
+            {% for message in messages %}
+            <div class="alert alert-m-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong>{{message.tags}}!</strong> {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        <form action="" method="post" id="edit-form">
+        {% csrf_token %}
+        <h1 class="text-center">Edit Your Details</h1>
         <div class="row">
             <di class="col-md-6">
                 <span>First Name: </span>
@@ -65,7 +75,7 @@
         </div>
 
         <!-- dates -->
-        <div class="row m-4">
+        <div class="row m-4 dates-container">
             <h2>Availability</h2>
             <hr>
 
@@ -113,10 +123,41 @@
                 Saturday End: {{form.sat_end}}
             </div>
         </div>
-        <div>
-            <button class="btn btn-primary">Update</button>
+        </form>
+        <div id="update-btn">
+            
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#docEditConfirmation">
+                Update
+            </button>
         </div>
 
     </div>
 </div>
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="docEditConfirmation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirm Changes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            
+            <p><b>Note: </b> If you are updating your available timings for any particular day which already has any appointment 
+            fixed on that day, then the date and time for that appointment cannot be changed regardless of the current changes in 
+            your availability. This is a part of our policy. </p>
+            <p>Proceed with the current changes?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary" onclick="confirmDoctorEdit()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -24,7 +25,6 @@ class PatientEditPage(View):
             fm = PatientEditForm(instance = patient, data = request.POST)
             if fm.is_valid():
                 fm.save()
-                print("updated")
                 messages.success(request, "Details Updated Sussessfully!")
                 return redirect('/edit/patient/')
             messages.error(request, "Coudn't update details!")    
@@ -55,3 +55,13 @@ class DoctorEditPage(View):
         doctor = Doctor.objects.get(pk=request.user.id)
         fm = DoctorEditForm(instance = doctor)
         return render(request, "doctor/doctor-edit.html", {"form" : fm})
+    def post(self, request):
+        doctor = Doctor.objects.get(pk=request.user.id)
+        fm = DoctorEditForm(instance = doctor, data = request.POST)
+        if fm.is_valid():
+            fm.save()
+            messages.success(request, "Details Updated Sussessfully!")
+            print(fm.cleaned_data)
+        else:
+            messages.error(request, "Failed to update!")  
+        return redirect("/edit/doctor/") 
