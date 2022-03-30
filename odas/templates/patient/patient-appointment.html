@@ -91,7 +91,7 @@
       <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingThree">
           <button class="accordion-button bg-primary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
-            <b>Upcomming Appointments</b>
+            <b>Upcoming Appointments</b>
           </button>
         </h2>
         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
@@ -107,7 +107,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Date: {{appointment.date}}, Time: {{appointment.time}}</h5>
                     <p class="card-text">Appointment with Dr. {{appointment.doctor.first_name}} {{appointment.doctor.last_name}} on {{appointment.date}}</p>
-                    <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-primary disabled" target="_blank">Upcomming</a>
+                    <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-primary disabled" target="_blank">Upcoming</a>
                   </div>
                 </div>
             {% endfor %}
