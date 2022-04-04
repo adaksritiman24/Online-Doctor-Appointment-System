@@ -28,6 +28,7 @@
                         <h5 class="card-title">Date: {{appointment.date}}, Time: {{appointment.time}}</h5>
                         <p class="card-text">Appointment with {{appointment.patient.first_name}} {{appointment.patient.last_name}} on {{appointment.date}}</p>
                         <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-secondary" target="_blank">Appointment is Over</a>
+                        <button onclick="fetchPatientReports('{{appointment.patient.id}}')" class="btn btn-outline-info btn-sm">View Reports</button>      
                       </div>
                       {% include 'doctor/prescription-control.html'%}
                     </div>
@@ -64,7 +65,8 @@
                       <div class="col-md-8">
                         <h5 class="card-title">Date: {{appointment.date}}, Time: {{appointment.time}}</h5>
                         <p class="card-text">Appointment with {{appointment.patient.first_name}} {{appointment.patient.last_name}} on {{appointment.date}}</p>
-                        <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-success" target="_blank">Start Appointment</a>       
+                        <a href="{% url 'main-chat-view' appointment.id %}" class="btn btn-success" target="_blank">Start Appointment</a> 
+                        <button onclick="fetchPatientReports('{{appointment.patient.id}}')" class="btn btn-outline-info btn-sm">View Reports</button>      
                       </div>
                       {% include 'doctor/prescription-control.html'%}
                     </div>
@@ -112,5 +114,15 @@
     </div>  
   </div>   
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="reports-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" id="report-modal-content">
+      
+    </div>
+  </div>
+</div>
+
 
 {% endblock %}

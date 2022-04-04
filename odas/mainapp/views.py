@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from django.views import View
 from accounts.models import Patient, Doctor
 from accounts.views import isDoctor, isPatient
+from edit.models import Report 
 from django.contrib.auth import logout
 from .models import Appointment
 from datetime import date, datetime, timedelta
@@ -216,3 +217,14 @@ def viewPrescription(request, app_no):
         "appointment" : appointment,
     }
     return render( request, 'prescription/viewer.html', context=context)
+
+
+#fetch patient reports
+
+def patientReports(request, p_id):
+    try:
+        reports = list(Report.objects.filter(patient_id = int(p_id)).values())
+    except Exception:
+        reports = []    
+        
+    return JsonResponse(reports, safe=False)

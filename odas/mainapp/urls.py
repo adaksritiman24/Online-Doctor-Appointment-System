@@ -23,4 +23,7 @@ urlpatterns = [
 
     #view prescription
     path('appointment/prescriptions/view/<int:app_no>/', views.viewPrescription, name = "vp"),
+
+    #fetch reports
+    path("reports/patient/<int:p_id>", views.patientReports, name = "p_rep"),
 ]
