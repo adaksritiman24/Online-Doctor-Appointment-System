@@ -1,0 +1,41 @@
+{% extends 'article/base1.html' %}
+
+{% block title %}
+Upload Article
+{% endblock title %}
+
+{% block content %}
+<section class="blog-post section-header-offset">
+    <div class="blog-post-container container">
+        <form action="#" enctype="multipart/form-data" method="post" name="uploader">
+            {% csrf_token %}
+            <div class="blog-post-data">
+                <input type="text" name="title" class="title blog-post-title" placeholder="Enter the title of the post here" role="div" required>
+                <div class="article-data">
+                    <span>{{date}}</span>
+                    <span class="article-data-spacer"></span>
+                    <span>Author</span>
+                </div>
+                Upload your image below, or keep it blank to use a default image
+                <p>
+                    <input type="file" name="imagein" id="imagein" accept="image/*">
+                </p>
+            </div>
+            <div class="container">
+                <textarea cols="40" rows="70" name="blog" placeholder="Here you can write your blog Doctor. Please care to keep it within 1000 words. Thanks !" required></textarea>
+                <div class="author d-grid">
+                    <div class="author-image-box">
+                        <img src="" alt="Couldn't load image">
+                    </div>
+                    <div class="author-about">
+                        <h3 class="author-name">Name of Doctor</h3>
+                        <p>Doctor credentials</p>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn upload-btn fancy-border">
+                <span>Upload</span>
+            </button>
+    </div>
+</section>
+{% endblock content %}

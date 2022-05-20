@@ -1,0 +1,36 @@
+{% extends 'article/base1.html' %}
+{% load static %}
+
+{% block title %}
+Results
+{% endblock title %}
+
+{% block content %}
+<section class="result-posts section section-header-offset">
+    <div class="container">
+        <div class="results-grid-wrapper d-grid">
+            {% if messages %}
+            {% for message in messages %}
+            <h3>{{message}}</h3>
+            {% endfor %}
+            {% endif %}
+            {% for article in articles %}
+                <a href="{% url 'read_article' article.id %}" class="article d-grid">
+                    <div class="results-image-wrapper">
+                        <img src="{{article.image.url}}" alt="Couldn\'t load image">
+                    </div>
+                    <div class="article-data-container">
+                        <div class="article-data">
+                            <span>{{article.upload_date}}</span>
+                            <span class="article-data-spacer"></span>
+                            <span>Author</span>
+                        </div>
+                        <h3 class="title article-title">{{article.title}}</h3>
+                        <!-- <p class="article-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p> -->
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
