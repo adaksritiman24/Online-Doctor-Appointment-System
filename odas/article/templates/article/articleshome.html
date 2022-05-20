@@ -1,0 +1,122 @@
+{% extends 'article/base1.html' %}
+{% load static %}
+
+{% block title %}
+Articles Forum
+{% endblock title %}
+
+{% block content %}
+Last added
+<section class="last-added section-header-offset">
+    <div class="last-added-container container">
+        <div class="headline-banner">
+            <h3 class="headline fancy-border">
+                <span class="place-items-center">Articles Forum</span>
+            </h3>
+            <span class="headline-description">Here you can read articles written by doctors registered on this site</span>
+        </div>
+        <h2 class="title section-title">Last Added</h2>
+        <div class="last-added-grid-wrapper d-grid">
+            {% if  articles_last_added.0 %}
+            <a href="{% url 'read_article' articles_last_added.0.id %}" class="article last-added-article last-added-article-1">
+                <div class="article-image-wrapper">
+                    <img src="{{articles_last_added.0.image.url}}" alt="Couldn\'t load image" class="article-image">
+                </div>
+                <div class="article-data-container">
+                    <div class="article-data">
+                        <span>{{articles_last_added.0.upload_date}}</span>
+                        <span class="article-data-spacer"></span>
+                        <span>Author name</span>
+                    </div>
+                    <h3 class="title article-title">{{articles_last_added.0.title}}</h3>
+                    <p class="article-description">{{articles_last_added.0.blog|slice:":100"}} ...</p>
+                </div>
+            </a>
+            {% endif %}
+            {% if  articles_last_added.1 %}
+            <a href="{% url 'read_article' articles_last_added.1.id %}" class="article last-added-article last-added-article-2">
+                <div class="article-image-wrapper">
+                    <img src="{{articles_last_added.1.image.url}}" alt="Couldn\'t load image" class="article-image">
+                </div>
+                <div class="article-data-container">
+                    <div class="article-data">
+                        <span>{{articles_last_added.1.upload_date}}</span>
+                        <span class="article-data-spacer"></span>
+                        <span>Author name</span>
+                    </div>
+                    <h3 class="title article-title">{{articles_last_added.1.title}}</h3>
+                    <p class="article-description">{{articles_last_added.1.blog|slice:":100"}} ...</p>
+                </div>
+            </a>
+            {% endif %}
+            {% if  articles_last_added.2 %}
+            <a href="{% url 'read_article' articles_last_added.2.id %}" class="article last-added-article last-added-article-3">
+                <div class="article-image-wrapper">
+                    <img src="{{articles_last_added.2.image.url}}" alt="Couldn\'t load image" class="article-image">
+                </div>
+                <div class="article-data-container">
+                    <div class="article-data">
+                        <span>{{articles_last_added.2.upload_date}}</span>
+                        <span class="article-data-spacer"></span>
+                        <span>Author name</span>
+                    </div>
+                    <h3 class="title article-title">{{articles_last_added.2.title}}</h3>
+                    <p class="article-description">{{articles_last_added.2.blog|slice:":100"}} ...</p>
+                </div>
+            </a>
+            {% endif %}
+            {% if  articles_last_added.3 %}
+            <a href="{% url 'read_article' articles_last_added.3.id %}" class="article last-added-article last-added-article-4">
+                <div class="article-image-wrapper">
+                    <img src="{{articles_last_added.3.image.url}}" alt="Couldn\'t load image" class="article-image">
+                </div>
+                <div class="article-data-container">
+                    <div class="article-data">
+                        <span>{{articles_last_added.3.upload_date}}</span>
+                        <span class="article-data-spacer"></span>
+                        <span>Author name</span>
+                    </div>
+                    <h3 class="title article-title">{{articles_last_added.3.title}}</h3>
+                    <p class="article-description">{{articles_last_added.3.blog|slice:":100"}} ...</p>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+<section class="quick-read section">
+    <div class="container">
+        <h2 class="title section-title">Quick Read</h2>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                {% for article in articles_quick_read %}
+                <a href="{% url 'read_article' article.id %}" class="article swiper-slide">
+                    <div class="results-image-wrapper">
+                        <img src="{{article.image.url}}" alt="Couldn't load image" class="article-image">
+                    </div>
+                    <div class="article-data-container">
+                        <div class="article-data">
+                            <span>{{article.upload_date}}</span>
+                            <span class="article-data-spacer"></span>
+                            <span>Author Name</span>
+                        </div>
+                        <h3 class="title article-title">{{article.title}}</h3>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+            <div class="swiper-button-prev swiper-controls"></div>
+            <div class="swiper-button-next swiper-controls"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+     
+        <div class="see-more-container">
+            <a href="{% url 'results' %}" class="see-more-btn place-items-center">
+                See more <i class="ri-arrow-right-s-line"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock content %}

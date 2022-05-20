@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'mainapp',
     'edit',
+    'article',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 

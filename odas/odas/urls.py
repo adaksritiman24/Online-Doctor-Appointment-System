@@ -21,6 +21,7 @@ import accounts
 import mainapp
 import chat
 import edit
+import article
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,5 @@ urlpatterns = [
     path("",include('mainapp.urls')),
     path("chat/", include('chat.urls')),
     path('edit/', include('edit.urls')),
+    path('articles/', include('article.urls'))
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
