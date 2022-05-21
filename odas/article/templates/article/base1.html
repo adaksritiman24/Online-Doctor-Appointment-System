@@ -108,7 +108,7 @@
                     </li>
                     {% endif %}
                     <li class="list-item">
-                        <a href="#" class="list-link">Articles Forum</a>
+                        <a href="{% url 'articleshome' %}" class="list-link">Articles Forum</a>
                     </li>
                     {% if request.user.is_authenticated %}
                     <li class="list-item">
