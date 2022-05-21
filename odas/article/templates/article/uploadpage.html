@@ -14,7 +14,7 @@ Upload Article
                 <div class="article-data">
                     <span>{{date}}</span>
                     <span class="article-data-spacer"></span>
-                    <span>Author</span>
+                    <span>Dr. {{author.first_name}} {{author.last_name}}</span>
                 </div>
                 Upload your image below, or keep it blank to use a default image
                 <p>
@@ -25,11 +25,13 @@ Upload Article
                 <textarea cols="40" rows="70" name="blog" placeholder="Here you can write your blog Doctor. Please care to keep it within 1000 words. Thanks !" required></textarea>
                 <div class="author d-grid">
                     <div class="author-image-box">
-                        <img src="" alt="Couldn't load image">
+                        {% if author.img %}
+                        <img src="{{author.img.url}}" alt="Couldn't load image">
+                        {% endif %}
                     </div>
                     <div class="author-about">
-                        <h3 class="author-name">Name of Doctor</h3>
-                        <p>Doctor credentials</p>
+                        <h3 class="author-name">Dr. {{author.first_name}} {{author.last_name}}</h3>
+                        <p>{{author.speciality}}</p>
                     </div>
                 </div>
             </div>

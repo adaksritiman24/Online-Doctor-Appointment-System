@@ -26,7 +26,7 @@ Last added
                     <div class="article-data">
                         <span>{{articles_last_added.0.upload_date}}</span>
                         <span class="article-data-spacer"></span>
-                        <span>Author name</span>
+                        <span>Dr. {{articles_last_added.0.author.first_name}} {{articles_last_added.0.author.last_name}}</span>
                     </div>
                     <h3 class="title article-title">{{articles_last_added.0.title}}</h3>
                     <p class="article-description">{{articles_last_added.0.blog|slice:":100"}} ...</p>
@@ -42,7 +42,7 @@ Last added
                     <div class="article-data">
                         <span>{{articles_last_added.1.upload_date}}</span>
                         <span class="article-data-spacer"></span>
-                        <span>Author name</span>
+                        <span>Dr. {{articles_last_added.1.author.first_name}} {{articles_last_added.1.author.last_name}}</span>
                     </div>
                     <h3 class="title article-title">{{articles_last_added.1.title}}</h3>
                     <p class="article-description">{{articles_last_added.1.blog|slice:":100"}} ...</p>
@@ -58,7 +58,7 @@ Last added
                     <div class="article-data">
                         <span>{{articles_last_added.2.upload_date}}</span>
                         <span class="article-data-spacer"></span>
-                        <span>Author name</span>
+                        <span>Dr. {{articles_last_added.2.author.first_name}} {{articles_last_added.2.author.last_name}}</span>
                     </div>
                     <h3 class="title article-title">{{articles_last_added.2.title}}</h3>
                     <p class="article-description">{{articles_last_added.2.blog|slice:":100"}} ...</p>
@@ -74,7 +74,7 @@ Last added
                     <div class="article-data">
                         <span>{{articles_last_added.3.upload_date}}</span>
                         <span class="article-data-spacer"></span>
-                        <span>Author name</span>
+                        <span>Dr. {{articles_last_added.3.author.first_name}} {{articles_last_added.3.author.last_name}}</span>
                     </div>
                     <h3 class="title article-title">{{articles_last_added.3.title}}</h3>
                     <p class="article-description">{{articles_last_added.3.blog|slice:":100"}} ...</p>
@@ -100,7 +100,7 @@ Last added
                         <div class="article-data">
                             <span>{{article.upload_date}}</span>
                             <span class="article-data-spacer"></span>
-                            <span>Author Name</span>
+                            <span>Dr. {{article.author.first_name}} {{article.author.last_name}}</span>
                         </div>
                         <h3 class="title article-title">{{article.title}}</h3>
                     </div>
@@ -119,4 +119,5 @@ Last added
         </div>
     </div>
 </section>
+
 {% endblock content %}

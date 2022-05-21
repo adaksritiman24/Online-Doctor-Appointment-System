@@ -57,7 +57,7 @@ class DoctorEditPage(View):
         return render(request, "doctor/doctor-edit.html", {"form" : fm})
     def post(self, request):
         doctor = Doctor.objects.get(pk=request.user.id)
-        fm = DoctorEditForm(instance = doctor, data = request.POST)
+        fm = DoctorEditForm(request.POST, request.FILES, instance = doctor)
         if fm.is_valid():
             fm.save()
             messages.success(request, "Details Updated Sussessfully!")

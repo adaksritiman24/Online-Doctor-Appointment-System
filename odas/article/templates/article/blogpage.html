@@ -12,7 +12,7 @@
             <div class="article-data">
                 <span>{{article.upload_date}}</span>
                 <span class="article-data-spacer"></span>
-                <span>Author</span>
+                <span>Dr. {{article.author.first_name}} {{article.author.last_name}}</span>
             </div>
             <img src="{{article.image.url}}" alt="Couldn't load image">
         </div>
@@ -20,11 +20,13 @@
             <div>{{article.blog|linebreaksbr}}</div>
             <div class="author d-grid">
                 <div class="author-image-box">
-                    <img src="" alt="Couldn't load image">
+                    {% if article.author.img %}
+                    <img src="{{article.author.img.url}}" alt="Couldn't load image">
+                    {% endif %}
                 </div>
                 <div class="author-about">
-                    <h3 class="author-name">Name of Doctor</h3>
-                    <p>Doctor credentials</p>
+                    <h3 class="author-name">Dr. {{article.author.first_name}} {{article.author.last_name}}</h3>
+                    <p>{{article.author.speciality}}</p>
                 </div>
             </div>
         </div>
