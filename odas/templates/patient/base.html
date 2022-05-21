@@ -17,6 +17,9 @@
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>ODAS</title>
   </head>
   <body>
@@ -31,30 +34,30 @@
           <ul class="navbar-nav">
             {% if not request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'pr' %}" style="margin-right: 10px;">Sign Up</a>
+              <a class="nav-link" href="{% url 'pr' %}" style="margin-right: 10px;"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
             </li>
             
             <li class="nav-item">
               <button type="button" class="btn nav-link" data-bs-toggle="modal" data-bs-target="#LoginModal" id="login-btn">
-                Login
+                <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
               </button>
             </li>  
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'pd' %}">DashBoard</a>
+              <a class="nav-link" href="{% url 'pd' %}"><i class="fa-solid fa-hospital"></i> DashBoard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'p_app' %}">Appointments</a>
+              <a class="nav-link" href="{% url 'p_app' %}"><i class="fa-solid fa-calendar-check"></i> Appointments</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'p_edit' %}">Edit Profile</a>
+              <a class="nav-link" href="{% url 'p_edit' %}"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout_p' %}">Logout</a>
+              <a class="nav-link" href="{% url 'logout_p' %}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
             </li>
             {% endif %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'articleshome' %}">Articles</a>
+              <a class="nav-link" href="{% url 'articleshome' %}"><i class="fa-solid fa-newspaper"></i> Articles</a>
             </li>
           </ul>
         </div>
@@ -80,6 +83,7 @@
     <script src="{% static 'payments/payment.js' %}" type="text/javascript"></script>
     <script src="{% static 'patient/js/main.js' %}"></script>
     <script src="{% static 'patient/js/extends.js' %}"></script>
+    <script src="{% static 'patient/js/dashboard.js' %}"></script>
     
   </body>
 </html>

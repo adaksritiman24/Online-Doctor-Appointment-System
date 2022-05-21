@@ -10,14 +10,29 @@
       </div>
       {% endfor %}
   </div>
-  <h1>
-  Patient : {{patient.first_name}} {{patient.last_name}} 
+  <section class="top-dashboard-bar">
+    <div>
+      <h1 class="dashboard-patient">
+      {{patient.first_name}} {{patient.last_name}} 
+      </h1>
     
-  </h1>
+      <h3>Welcome To Your DashBoard</h3>
+      <p><a href="{% url 'logout_p' %}">Logout</a></p>
+    </div>
+    <div>
+      <a class="dashboard-refresh-btn" href="{% url 'pd' %}">
+        Refresh <i class="fa-solid fa-arrows-rotate"></i>
+      </a>
+    </div>
+  </section>
 
-  <h3>Welcome To DashBoard</h3>
-  <p><a href="{% url 'logout_p' %}">Logout</a></p>
-
+  <section class="doc-search">
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" placeholder="Search by doctor's name or speciality" name="keyword">
+      <button type="submit"><i class="fa fa-solid fa-magnifying-glass"></i></button>
+    </form>
+  </section>
   <h3 class = "text-center">Available Doctors</h3>
   <hr>
   <div class="d-flex justify-content-center" style="flex-wrap: wrap;">

@@ -48,3 +48,72 @@
 .alert-m-success {
     background-color: rgb(176, 247, 129);
 }
+
+.dashboard-patient {
+    font-family: helvetica;
+    font-weight: bold;
+    color: rgb(2, 37, 2);
+    border-bottom: 1px solid rgb(81, 89, 157);
+}
+
+/*doctor search area*/
+
+.doc-search {
+    display: flex;
+    justify-content: center;
+
+}
+
+.doc-search > form {
+    width: 65%;
+    position: relative;
+    /* grid-column: 2; */
+    font-size: 23px;
+    font-family: arial;
+}
+.doc-search > form > * {
+    padding: 5px;
+}
+.doc-search > form > input {
+    width: 100%;
+    border-radius: 7px;
+    background-color: #eee;
+    border: 1px solid gray;
+}
+.doc-search > form > button {
+    border: 1px solid gray;
+    background-color: #bbb;
+    position: absolute;
+    right: 0;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*dashboard top*/
+
+.top-dashboard-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-dashboard-bar > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-refresh-btn{
+    border: none;
+    background-color: rgb(93, 108, 242);
+    font-size: 26px;
+    padding: 10px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.dashboard-refresh-btn:hover {
+    background-color: rgb(62, 62, 245);
+    color: white;
+}

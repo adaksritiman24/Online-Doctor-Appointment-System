@@ -1,3 +1,4 @@
+
 from django.db.models.aggregates import Count
 from django.http import request, JsonResponse
 from django.shortcuts import redirect, render
@@ -12,6 +13,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q 
 from django.utils import timezone
 from django.core.files.storage import FileSystemStorage
+from django.db.models.functions import Concat
+from django.db.models import Value
 # Create your views here.
 
 class PatientDashboard(View):
@@ -20,7 +23,7 @@ class PatientDashboard(View):
             if isDoctor(request.user):
                 return redirect('/dashboard/doctor/')
             patient = Patient.objects.get(pk = request.user.id)
-            doctors = Doctor.objects.all()
+            doctors = Doctor.objects.all()[0:12]
 
             context = {
                 "patient" : patient,
@@ -28,7 +31,20 @@ class PatientDashboard(View):
             }
            
             return render(request, "patient/patient-dashboard.html", context=context)
-        return redirect('/accounts/login/patient/')    
+        return redirect('/accounts/login/patient/') 
+    def post(self, request):
+        keyword = request.POST["keyword"]
+        print(keyword)
+        patient = Patient.objects.get(pk = request.user.id)
+        doctors = Doctor.objects.annotate(full_name = Concat("first_name", Value(" "),"last_name"))
+
+        filtered_doctors = doctors.filter(Q(full_name__icontains=keyword) | Q(speciality__icontains=keyword))[0:12]
+
+        context = {
+                "patient" : patient,
+                "doctors": filtered_doctors,
+            }
+        return render(request, "patient/patient-dashboard.html", context=context)     
        
 class DoctorDashboard(View):
     def get(self, request):
