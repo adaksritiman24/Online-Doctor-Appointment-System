@@ -55,6 +55,47 @@
     {% block content %}
     {% endblock %}
 
+    <!-- Footer -->
+    <footer class="footer section">
+      <div class="footer-container container d-grid">
+          <div>
+              <h6 class="title footer-title">Useful Links</h6>
+              <ul class="list footer-list">
+                  {% if request.user.is_authenticated %}
+                  <li class="list-item">
+                      <a href="{% url 'a_dashboard' %}" class="list-link">Dashboard</a>
+                  </li>
+                  {% endif %}
+                  <li class="list-item">
+                      <a href="#" class="list-link">Articles Forum</a>
+                  </li>
+                  {% if request.user.is_authenticated %}
+                  <li class="list-item">
+                      <a href="{% url 'a_profile' %}" class="list-link">Profile</a>
+                  </li>
+                  <li class="list-item">
+                      <a href="{% url 'a_app' %}" class="list-link">Appointments</a>
+                  </li>
+                  {% endif %}
+              </ul>
+          </div>
+          <div>
+              <h6 class="title footer-title">Contact Us</h6>
+              <ul class="list footer-list">
+                  <li class="list-item">
+                      <a href="#" class="list-link">Phone :62894 03930</a>
+                  </li>
+                  <li class="list-item">
+                      <a href="#" class="list-link">Whatsapp :62917 68037</a>
+                  </li>
+                  <li class="list-item">
+                      <a href="#" class="list-link">Email :adaksritiman24@gmail.com</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </footer>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
