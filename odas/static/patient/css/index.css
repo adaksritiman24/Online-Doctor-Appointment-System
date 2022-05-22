@@ -2,12 +2,24 @@
     margin: 0;
     padding: 0;
 }
+
+ul{
+    list-style: none;
+}
+
 p{
     font-size: 3vh;
 }
 a{
     text-decoration: none;
 }
+
+ul a{
+    text-decoration: none;
+    color: inherit;
+    height: fit-content;
+}
+
 .banner{
     background:linear-gradient(rgb(25,135,84), rgb(222, 226, 224));
     padding:20px 0px;
@@ -127,4 +139,61 @@ a{
 }
 .gyan{
     font-weight: bold;
+}
+
+.footer{
+    background-color: #125b23;
+}
+
+.section{
+    padding-block: 4rem;
+}
+
+.footer-container{
+    gap: 2rem;
+}
+
+.container{
+    max-width: 160rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.d-grid{
+    display: grid;
+}
+
+.title{
+    color: #fff;
+}
+
+.footer-title{
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.list{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-list{
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.list-link{
+    color: silver;
+}
+
+.list-link:hover{
+    color: blanchedalmond;
+}
+
+@media screen and (min-width: 1024px){
+    .footer-container{
+        grid-template-columns: repeat(3,1fr);
+    }
 }
