@@ -60,7 +60,7 @@ ul a{
     gap: 2rem;
 }
 
-.container{
+.dcontainer{
     max-width: 160rem;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -97,6 +97,10 @@ ul a{
 
 .list-link:hover{
     color: blanchedalmond;
+}
+
+.form-center{
+    display: flex;
 }
 
 @media screen and (min-width: 1024px){

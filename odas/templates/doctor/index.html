@@ -1,9 +1,15 @@
 {% extends 'doctor/base.html' %}
+{% load static %}
 
 {% block content %}
 
 <h1 class="text-center">Index Page for doctor</h1>
-<p><a href="{% url 'dr' %}">Register</a></p>
-<p><a href="{% url 'dl' %}">Login</a></p>
+<div class="form-center index-page-form">
+    <div class="form-stack">
+        <p><a href="{% url 'dr' %}">Register</a></p>
+        <p><a href="{% url 'dl' %}">Login</a></p>
+    </div>
+    <img src="{% static 'doctor/imgs/doc_index.PNG' %}" alt="">
+</div>
 
 {% endblock %}

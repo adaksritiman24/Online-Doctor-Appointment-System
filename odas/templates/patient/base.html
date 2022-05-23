@@ -70,11 +70,11 @@
     {% endblock %}
 
     <!-- Footer -->
-    <footer class="footer section">
-      <div class="footer-container container d-grid">
+    <footer class="bg-success section">
+      <div class="footer-container pcontainer d-grid">
           <div>
               <h6 class="title footer-title">Useful Links</h6>
-              <ul class="list footer-list">
+              <ul class="footer-list">
                   {% if request.user.is_authenticated %}
                   <li class="list-item">
                       <a href="{% url 'a_dashboard' %}" class="list-link">Dashboard</a>
@@ -95,7 +95,7 @@
           </div>
           <div>
               <h6 class="title footer-title">Contact Us</h6>
-              <ul class="list footer-list">
+              <ul class="footer-list">
                   <li class="list-item">
                       <a href="#" class="list-link">Phone :62894 03930</a>
                   </li>
@@ -108,7 +108,7 @@
               </ul>
           </div>
       </div>
-  </footer>
+    </footer>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

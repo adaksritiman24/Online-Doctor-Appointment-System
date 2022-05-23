@@ -3,8 +3,20 @@
     padding: 0;
 }
 
+body{
+    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+body > footer {
+    flex-grow: 1;
+}
+
 ul{
     list-style: none;
+    padding-left: 0;
 }
 
 p{
@@ -141,19 +153,20 @@ ul a{
     font-weight: bold;
 }
 
-.footer{
-    background-color: #125b23;
-}
-
 .section{
     padding-block: 4rem;
+}
+
+footer{
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-container{
     gap: 2rem;
 }
 
-.container{
+.pcontainer{
     max-width: 160rem;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -173,13 +186,10 @@ ul a{
     margin-bottom: 2rem;
 }
 
-.list{
+.footer-list{
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-.footer-list{
     flex-direction: column;
     align-items: flex-start;
 }
