@@ -65,3 +65,10 @@ class DoctorEditPage(View):
         else:
             messages.error(request, "Failed to update!")  
         return redirect("/edit/doctor/") 
+
+
+def delete_report(request, rep_id):
+    print("Running......................................................")
+    report = Report.objects.get(pk = rep_id)
+    report.delete()
+    return redirect('/edit/patient/')

@@ -58,6 +58,9 @@
                 <div class="report-each">
                     <a href="{{report.report.url}}">{{report.name}}</a>
                     <a href="{% url 'vr' report.id %}" target="_blank">View this Report</a>
+                    <a href="{% url 'del_rep' report.id %}" class="btn btn-sm btn-danger">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
                 </div>
                     
                 {% endfor %}
@@ -73,11 +76,13 @@
                     </div>
                     <div class="row">
                         <div class="mb-3">
-                            <input class="form-control" type="text" placeholder="Description of the report" name="description">
+                            <input class="form-control" type="text" required placeholder="Description of the report" name="description">
                         </div>
                     </div>
                     <div style="display:flex; justify-content:flex-end;">
                         <button type="submit" class="btn btn-info btn-update-2" >Upload</button>
+
+                        
                     </div>
                     
                 </form>

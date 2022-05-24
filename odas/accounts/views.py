@@ -69,7 +69,7 @@ class DoctorRegistration(View):
         return redirect('/dashboard/doctor/')
 
     def post(self, request):
-        form = DoctorRegistrationForm(request.POST)
+        form = DoctorRegistrationForm( request.POST,  request.FILES)
 
         if form.is_valid():
             users = User.objects.filter(email = form.cleaned_data["email"])

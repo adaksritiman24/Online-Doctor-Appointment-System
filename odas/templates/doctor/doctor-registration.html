@@ -7,7 +7,7 @@
 {% for message in messages %}
 <div>{{message}}</div>
 {% endfor %}
-<form method="post" class = "col-md-4 offset-4">
+<form method="post" class = "col-md-4 offset-4" enctype="multipart/form-data">
     
     {% csrf_token %}
     <table  >
