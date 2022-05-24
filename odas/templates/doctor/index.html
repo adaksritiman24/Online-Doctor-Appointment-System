@@ -3,11 +3,11 @@
 
 {% block content %}
 
-<h1 class="text-center">Index Page for doctor</h1>
+<h1 class="text-center">Hello Doctor! Welcome to the Online Doctor Appointment System</h1>
 <div class="form-center index-page-form">
     <div class="form-stack">
-        <p><a href="{% url 'dr' %}">Register</a></p>
-        <p><a href="{% url 'dl' %}">Login</a></p>
+        <div class="form-stack-item"><a href="{% url 'dr' %}">Register</a></div>
+        <div class="form-stack-item"><a href="{% url 'dl' %}">Login</a></div>
     </div>
     <img src="{% static 'doctor/imgs/doc_index.PNG' %}" alt="">
 </div>
