@@ -2,87 +2,84 @@
 {% load static %}
 
 {% block content %}
-
-<div class="d-flex">
-    <div>
-        <h2 class="text-center">Doctor Registration</h2>
-        {% for message in messages %}
-        <div>{{message}}</div>
-        {% endfor %}
-        <img src="{% static 'doctor/imgs/reg.webp' %}" alt="NF">
-    </div>
+<h2 class="text-primary" style="text-align:center; margin: 26px; text-decoration:underline;">Doctor Registration</h2>
+{% for message in messages %}
+<div>{{message}}</div>
+{% endfor %}
+<div class="doc-reg-container">
+    <div><img src="{% static 'doctor/imgs/reg.webp' %}" alt="NF" class="doc-reg-image"></div>
     <div>
 
-        <form method="post" class="col-md-4 offset-4" enctype="multipart/form-data">
-    
+        <form method="post" class="form-center" enctype="multipart/form-data">
+
             {% csrf_token %}
             <table>
                 <tbody>
                     <tr>
-    
-                        {{fm.first_name.label_tag}}{{fm.first_name}} {{fm.first_name.errors | striptags}}
-    
+
+                        First Name*{{fm.first_name}} {{fm.first_name.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.last_name.label_tag}}{{fm.last_name}} {{fm.last_name.errors | striptags}}
-    
+
+                        Last Name*{{fm.last_name}} {{fm.last_name.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.dob.label_tag}}{{fm.dob}} {{fm.dob.errors | striptags}}
-    
+
+                        Date of Birth*{{fm.dob}} {{fm.dob.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.gender.label_tag}}{{fm.gender}} {{fm.gender.errors | striptags}}<br>
-    
+
+                        Gender*{{fm.gender}} {{fm.gender.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.username.label_tag}}{{fm.username}} {{fm.username.errors | striptags}}
-    
+
+                        Username*{{fm.username}} {{fm.username.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.email.label_tag}}{{fm.email}} {{fm.email.errors | striptags}}
-    
+
+                        Email*{{fm.email}} {{fm.email.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.contact.label_tag}}{{fm.contact}} {{fm.contact.errors | striptags}}
-    
+
+                        Contact*{{fm.contact}} {{fm.contact.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.yoe.label_tag}}{{fm.yoe}} {{fm.yoe.errors | striptags}}
-    
+
+                        Years of Experience*{{fm.yoe}} {{fm.yoe.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.speciality.label_tag}}{{fm.speciality}} {{fm.speciality.errors | striptags}}
-    
+
+                        Speciality*{{fm.speciality}} {{fm.speciality.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.bio.label_tag}}{{fm.bio}} {{fm.bio.errors | striptags}}
-    
+
+                        Bio{{fm.bio}} {{fm.bio.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.img.label_tag}}{{fm.img}} {{fm.img.errors | striptags}}
-    
+
+                        Photo{{fm.img}} {{fm.img.errors | striptags}}
+
                     </tr>
                     <tr>
-    
-                        {{fm.charge.label_tag}}{{fm.charge}} {{fm.charge.errors | striptags}}
-    
+
+                        {{fm.charge.label_tag}}*{{fm.charge}} {{fm.charge.errors | striptags}}
+
                     </tr>
-    
+
                     <tr>
-    
-                        Your Paypal Account Name(to receive Payments): {{fm.paypal}} {{fm.paypal.errors | striptags}}
-    
+
+                        Your Paypal Account Name(to receive Payments)* {{fm.paypal}} {{fm.paypal.errors | striptags}}
+
                     </tr>
                     <tr>
                     <tr>
@@ -93,7 +90,7 @@
                         <th>Start Time</th>
                         <th>End Time</th>
                     </tr>
-    
+
                     <tr>
                         <td>
                             Sunday
@@ -149,7 +146,7 @@
                             {{fm.thu_end}}
                         </td>
                     </tr>
-    
+
                     <tr>
                         <td>
                             Friday
@@ -172,16 +169,16 @@
                             {{fm.sat_end}}
                         </td>
                     </tr>
-    
+
                     </tr>
                     <tr>
                         <td>
-                            {{fm.password1.label_tag}}{{fm.password1}} {{fm.password1.errors | striptags}}
+                            Password*{{fm.password1}} {{fm.password1.errors | striptags}}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {{fm.password2.label_tag}}{{fm.password2}} {{fm.password2.errors | striptags}}
+                            Retype Password*{{fm.password2}} {{fm.password2.errors | striptags}}
                         </td>
                     </tr>
                     <tr>
@@ -196,7 +193,7 @@
                 </tbody>
             </table>
         </form>
-        <p><a href="{% url 'index_d' %}">Back to Home</a></p>
     </div>
 </div>
+<h2 style="margin: 2rem 4rem;"><a href="{% url 'index_d' %}">Back to Home</a></h2>
 {% endblock %}

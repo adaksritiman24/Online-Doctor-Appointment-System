@@ -59,6 +59,11 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'articleshome' %}"><i class="fa-solid fa-newspaper"></i> Articles</a>
             </li>
+            {% if not request.user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{% url 'index_d' %}" class="nav-link btn btn-light text-success">Are you a doctor ?</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </div>

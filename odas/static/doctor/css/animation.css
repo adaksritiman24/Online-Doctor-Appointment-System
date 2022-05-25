@@ -1,9 +1,9 @@
 #hello-doctor {
-    animation: top-in 2s forwards ease-out;
+    animation: top-in 1s forwards ease-out;
 }
 
 #doc-index-banner {
-    animation: bottom-up 2s forwards ease-out;
+    animation: bottom-up 1s forwards ease-out;
     
 }
 

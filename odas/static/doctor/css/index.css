@@ -118,8 +118,8 @@ body > footer{
 }
 
 .login-form{
-    width: 30vw;
-    height: 30vh;
+    width: 24vw;
+    height: 20vh;
 }
 
 .login-form td{
@@ -131,9 +131,23 @@ body > footer{
     width: 90%;
 }
 
+.doc-reg-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.doc-reg-image{
+    width: 550px;
+    position: sticky;
+    top: 70px;
+    left: 70px;
+}
+
 .doc-login-btn{
    width: 70%;
    margin: auto;
+   margin-top: 12px;
 }
 
 
@@ -196,6 +210,10 @@ body > footer{
 
     .login-form{
         width: 70vw;
+    }
+
+    .doc-reg-image{
+        display: none;
     }
 }
 
