@@ -22,6 +22,7 @@ body{
 
 body > footer{
     flex-grow: 1;
+    z-index: 2;
 }
 
 .alert-m-error {
@@ -118,7 +119,7 @@ body > footer{
 
 .login-form{
     width: 30vw;
-    height: 40vh;
+    height: 30vh;
 }
 
 .login-form td{
@@ -126,16 +127,15 @@ body > footer{
     vertical-align: middle;
     color: #005fc5;
 }
+.login-form td > input {
+    width: 90%;
+}
 
 .doc-login-btn{
-    margin-left: 70%;
-    padding: 10px 100%;
+   width: 70%;
+   margin: auto;
 }
 
-.form-control{
-    width: 90%;
-    margin-right: 0;
-}
 
 .form-center{
     align-items: center;

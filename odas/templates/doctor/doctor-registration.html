@@ -1,195 +1,202 @@
 {% extends 'doctor/base.html' %}
+{% load static %}
 
 {% block content %}
 
-<div class = "row" >
-    <h2 class="text-center">Doctor Registration</h2>
-{% for message in messages %}
-<div>{{message}}</div>
-{% endfor %}
-<form method="post" class = "col-md-4 offset-4" enctype="multipart/form-data">
-    
-    {% csrf_token %}
-    <table  >
-        <tbody>
-            <tr>
-            
-                    {{fm.first_name.label_tag}}{{fm.first_name}} {{fm.first_name.errors | striptags}}
-                
-            </tr>
-            <tr>
-            
-                    {{fm.last_name.label_tag}}{{fm.last_name}} {{fm.last_name.errors | striptags}}
-                
-            </tr>
-            <tr>
-                
-                    {{fm.dob.label_tag}}{{fm.dob}} {{fm.dob.errors | striptags}}
-                
-            </tr>
-            <tr>
-                
-                    {{fm.gender.label_tag}}{{fm.gender}} {{fm.gender.errors | striptags}}<br>
-                
-            </tr>
-            <tr>
-                
-                    {{fm.username.label_tag}}{{fm.username}} {{fm.username.errors | striptags}}
-                
-            </tr>
-            <tr>
-                
-                    {{fm.email.label_tag}}{{fm.email}} {{fm.email.errors | striptags}}
-            
-            </tr>
-            <tr>
-            
-                    {{fm.contact.label_tag}}{{fm.contact}} {{fm.contact.errors | striptags}}
-            
-            </tr>
-            <tr>
-                
-                    {{fm.yoe.label_tag}}{{fm.yoe}} {{fm.yoe.errors | striptags}}
-            
-            </tr>
-            <tr>
-            
-                    {{fm.speciality.label_tag}}{{fm.speciality}} {{fm.speciality.errors | striptags}}
-                
-            </tr>
-            <tr>
-                
-                    {{fm.bio.label_tag}}{{fm.bio}} {{fm.bio.errors | striptags}}
-                
-            </tr>
-            <tr>
-                
-                    {{fm.img.label_tag}}{{fm.img}} {{fm.img.errors | striptags}}
-                
-            </tr>
-            <tr>
-            
-                    {{fm.charge.label_tag}}{{fm.charge}} {{fm.charge.errors | striptags}}
-            
-            </tr>
+<div class="d-flex">
+    <div>
+        <h2 class="text-center">Doctor Registration</h2>
+        {% for message in messages %}
+        <div>{{message}}</div>
+        {% endfor %}
+        <img src="{% static 'doctor/imgs/reg.webp' %}" alt="NF">
+    </div>
+    <div>
 
-            <tr>
-            
-                    Your Paypal Account Name(to receive Payments): {{fm.paypal}} {{fm.paypal.errors | striptags}}
-            
-            </tr>
-            <tr>
-                <tr>
-                    <th>Your Availability</th>
-                </tr>
-                <tr>
-                    <th>Day</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                </tr>
+        <form method="post" class="col-md-4 offset-4" enctype="multipart/form-data">
     
-                <tr>
-                    <td>
-                        Sunday
-                    </td>
-                    <td>
-                        {{fm.sun_start}}  {{fm.sun_start.errors | striptags}}
-                    </td>
-                    <td>
-                        {{fm.sun_end}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Monday
-                    </td>
-                    <td>
-                        {{fm.mon_start}}  {{fm.mon_start.errors | striptags}}
-                    </td>
-                    <td>
-                        {{fm.mon_end}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Tuesday
-                    </td>
-                    <td>
-                        {{fm.tue_start}}  {{fm.tue_start.errors | striptags}}
-                    </td>
-                    <td>
-                        {{fm.tue_end}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Wednesday
-                    </td>
-                    <td>
-                        {{fm.wed_start}}  {{fm.wed_start.errors | striptags}}
-                    </td>
-                    <td>
-                        {{fm.wed_end}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Thursday
-                    </td>
-                    <td>
-                        {{fm.thu_start}}  {{fm.thu_start.errors | striptags}}
-                    </td>
-                    <td>
-                        {{fm.thu_end}}
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>
-                        Friday
-                    </td>
-                    <td>
-                        {{fm.fri_start}}  {{fm.fri_start.errors | striptags}}
-                    </td>
-                    <td>
-                        {{fm.fri_end}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Saturday
-                    </td>
-                    <td>
-                        {{fm.sat_start}}  {{fm.sat_start.errors | striptags}}
-                    </td>
-                    <td>
-                        {{fm.sat_end}}
-                    </td>
-                </tr>
-                
-            </tr>
-            <tr>
-                <td>
-                    {{fm.password1.label_tag}}{{fm.password1}} {{fm.password1.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{fm.password2.label_tag}}{{fm.password2}} {{fm.password2.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <input type="submit" value="Submit" class="btn btn-primary">
-                    </td>
-                </tr>
-            </tr>
-        </tbody>
-    </table>
-</form>
-<p><a href="{% url 'index_d' %}">Back to Home</a></p>
+            {% csrf_token %}
+            <table>
+                <tbody>
+                    <tr>
+    
+                        {{fm.first_name.label_tag}}{{fm.first_name}} {{fm.first_name.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.last_name.label_tag}}{{fm.last_name}} {{fm.last_name.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.dob.label_tag}}{{fm.dob}} {{fm.dob.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.gender.label_tag}}{{fm.gender}} {{fm.gender.errors | striptags}}<br>
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.username.label_tag}}{{fm.username}} {{fm.username.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.email.label_tag}}{{fm.email}} {{fm.email.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.contact.label_tag}}{{fm.contact}} {{fm.contact.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.yoe.label_tag}}{{fm.yoe}} {{fm.yoe.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.speciality.label_tag}}{{fm.speciality}} {{fm.speciality.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.bio.label_tag}}{{fm.bio}} {{fm.bio.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.img.label_tag}}{{fm.img}} {{fm.img.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+    
+                        {{fm.charge.label_tag}}{{fm.charge}} {{fm.charge.errors | striptags}}
+    
+                    </tr>
+    
+                    <tr>
+    
+                        Your Paypal Account Name(to receive Payments): {{fm.paypal}} {{fm.paypal.errors | striptags}}
+    
+                    </tr>
+                    <tr>
+                    <tr>
+                        <th>Your Availability</th>
+                    </tr>
+                    <tr>
+                        <th>Day</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                    </tr>
+    
+                    <tr>
+                        <td>
+                            Sunday
+                        </td>
+                        <td>
+                            {{fm.sun_start}} {{fm.sun_start.errors | striptags}}
+                        </td>
+                        <td>
+                            {{fm.sun_end}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Monday
+                        </td>
+                        <td>
+                            {{fm.mon_start}} {{fm.mon_start.errors | striptags}}
+                        </td>
+                        <td>
+                            {{fm.mon_end}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Tuesday
+                        </td>
+                        <td>
+                            {{fm.tue_start}} {{fm.tue_start.errors | striptags}}
+                        </td>
+                        <td>
+                            {{fm.tue_end}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Wednesday
+                        </td>
+                        <td>
+                            {{fm.wed_start}} {{fm.wed_start.errors | striptags}}
+                        </td>
+                        <td>
+                            {{fm.wed_end}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Thursday
+                        </td>
+                        <td>
+                            {{fm.thu_start}} {{fm.thu_start.errors | striptags}}
+                        </td>
+                        <td>
+                            {{fm.thu_end}}
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td>
+                            Friday
+                        </td>
+                        <td>
+                            {{fm.fri_start}} {{fm.fri_start.errors | striptags}}
+                        </td>
+                        <td>
+                            {{fm.fri_end}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Saturday
+                        </td>
+                        <td>
+                            {{fm.sat_start}} {{fm.sat_start.errors | striptags}}
+                        </td>
+                        <td>
+                            {{fm.sat_end}}
+                        </td>
+                    </tr>
+    
+                    </tr>
+                    <tr>
+                        <td>
+                            {{fm.password1.label_tag}}{{fm.password1}} {{fm.password1.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{fm.password2.label_tag}}{{fm.password2}} {{fm.password2.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Submit" class="btn btn-primary">
+                        </td>
+                    </tr>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <p><a href="{% url 'index_d' %}">Back to Home</a></p>
+    </div>
 </div>
 {% endblock %}
