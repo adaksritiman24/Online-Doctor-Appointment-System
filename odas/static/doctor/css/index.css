@@ -116,6 +116,27 @@ body > footer{
     color: blanchedalmond;
 }
 
+.login-form{
+    width: 30vw;
+    height: 40vh;
+}
+
+.login-form td{
+    text-align: center;
+    vertical-align: middle;
+    color: #005fc5;
+}
+
+.doc-login-btn{
+    margin-left: 70%;
+    padding: 10px 100%;
+}
+
+.form-control{
+    width: 90%;
+    margin-right: 0;
+}
+
 .form-center{
     align-items: center;
     width: fit-content;
@@ -162,7 +183,7 @@ body > footer{
     display: flex;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 820px){
     .text-center{
         width: 90%;
         margin-left: auto;
@@ -171,6 +192,10 @@ body > footer{
 
     .index-page-form img{
         display: none;
+    }
+
+    .login-form{
+        width: 70vw;
     }
 }
 

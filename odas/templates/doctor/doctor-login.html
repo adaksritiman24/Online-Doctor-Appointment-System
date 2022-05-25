@@ -1,16 +1,13 @@
 {% extends "doctor/base.html" %}
 
 {% block content %}
-
-<h1>Doctor Login Page</h1>
-
-<form action="" method="post" class="form-center">
+<form action="" method="post" class="form-center mt-5">
     {% csrf_token %}
-    <table>
+    <table class="login-form" cellpadding="0" cellspacing="0">
         <tbody>
             <tr>
                 <td>
-                    Username :
+                    Username
                 </td>
                 <td>
                     <input type="text" name="username" class="form-control" required>
@@ -18,7 +15,7 @@
             </tr>
             <tr>
                 <td>
-                    Password :
+                    Password
                 </td>
                 <td>
                     <input type="password" name="password" class="form-control" required>
@@ -27,7 +24,7 @@
 
             <tr>
                 <td>
-                    <input type="submit" value="Login" class="btn btn-success btn-sm">
+                    <input type="submit" value="Login" class="btn btn-primary doc-login-btn">
                 </td>
             </tr>
         </tbody>
@@ -40,5 +37,4 @@
     </div>
     <p><a href="{% url 'index_d' %}">Back to Home</a></p>
 </form>
-
 {% endblock %}
