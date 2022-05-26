@@ -54,8 +54,11 @@ class DoctorDashboard(View):
                 return redirect('/dashboard/patient/')
 
             doctor = Doctor.objects.get(pk = request.user.id)
+            currentTime=datetime.now()
+            appointments_pending=len(Appointment.objects.filter(Q(date_time_start__gt = currentTime)).filter(doctor=doctor))
             context = {
                 "doctor" : doctor,
+                'pending_appointments':appointments_pending,
             }
            
             return render(request, "doctor/doctor-dashboard.html", context=context)

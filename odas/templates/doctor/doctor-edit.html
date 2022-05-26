@@ -1,7 +1,7 @@
 {% extends 'doctor/base.html' %}
 
 {% block content %}
-<div class="container mb-4">
+<div class="container mb-5">
     <div class="col-md-8 offset-md-2">
         <div>
             {% for message in messages %}
@@ -11,9 +11,9 @@
             </div>
             {% endfor %}
         </div>
-        <form action="" method="post" id="edit-form" enctype="multipart/form-data">
+        <form action="" method="post" id="edit-form" class="form-center" enctype="multipart/form-data">
         {% csrf_token %}
-        <h1 class="text-center">Edit Your Details</h1>
+        <h1 class="edit-page-title">Edit Your Details</h1>
         <div class="row">
             <di class="col-md-6">
                 <span>First Name: </span>
@@ -123,13 +123,13 @@
                 Saturday End: {{form.sat_end}}
             </div>
         </div>
-        </form>
         <div id="update-btn">
             
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#docEditConfirmation">
+            <button type="button" class="btn btn-primary doc-edit-btn mt-3 mb-4" data-bs-toggle="modal" data-bs-target="#docEditConfirmation">
                 Update
             </button>
         </div>
+        </form>
 
     </div>
 </div>

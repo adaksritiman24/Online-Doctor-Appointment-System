@@ -1,4 +1,5 @@
 {% extends "doctor/base.html" %}
+{% load static %}
 
 {% block content %}
 <div>
@@ -9,11 +10,58 @@
       </div>
     {% endfor %}
 </div>
-<h1>
-Doctor : Dr. {{doctor.first_name}} {{doctor.last_name}} 
-  
-</h1>
-
-<h3>Welcome To DashBoard</h3>
-<p><a href="{% url 'logout_d' %}">Logout</a></p>
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="d-block w-100 doc-dashboard-div"></div>
+      <div class="carousel-caption doc-dashboard-carousal-caption">
+        {% if doctor.img %}
+        <img src="{{doctor.img.url}}" class="manual-circle-maker" alt="Couldn't load image">
+        {% else %}
+        <img src="{% static 'doctor/imgs/avatar/male-doc.png' %}" class="manual-circle-maker" alt="Couldn't load image">
+        {% endif %}
+        <h1>Hello Dr. {{doctor.first_name}} {{doctor.last_name}}</h1>
+        <h4>Welcome to your dashboard !</h4>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="d-block w-100 doc-dashboard-div"></div>
+      <div class="carousel-caption">
+        <img src="{% static 'doctor/imgs/apoint.png' %}" class="doc-dashboard-appointments-image" alt="Couldn't load image">
+        <h1>You have {{pending_appointments}} appointments upcoming</h1>
+        <h4>Go to Appointments tab to stay updated</h4>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="d-block w-100 doc-dashboard-div"></div>
+      <div class="carousel-caption">
+        <img src="{% static 'doctor/imgs/edit-pic.png' %}" class="doc-dashboard-appointments-image" alt="Couldn't load image">
+        <h1>Add to your profile</h1>
+        <h4>at the Edit Details tab</h4>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="d-block w-100 doc-dashboard-div"></div>
+      <div class="carousel-caption">
+        <img src="{% static 'doctor/imgs/doc-dashboard-blog.png' %}" alt="Couldn't load image">
+        <h1>Go to the Articles Tab</h1>
+        <h4>to write medical blogs</h4>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 {% endblock %}

@@ -85,6 +85,16 @@ ul a{
     justify-content: center;
 }
 
+.doc-index-sender{
+    font-weight: 500;
+}
+
+.doc-index-sender:hover{
+    box-shadow: 2px 2px rgb(19, 118, 19);
+    color: rgb(19, 118, 19);
+    background-color: rgb(219, 236, 219);
+}
+
 .feature-card{
 
     background-color: rgb(222, 224, 224);
