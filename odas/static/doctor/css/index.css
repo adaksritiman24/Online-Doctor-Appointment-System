@@ -6,11 +6,6 @@ a{
     text-decoration: none;
 }
 
-ul a{
-    text-decoration: none;
-    color: inherit;
-    height: fit-content;
-}
 
 body{
     display: flex;
@@ -24,6 +19,61 @@ body > footer{
     flex-grow: 1;
     z-index: 2;
 }
+
+#hello-doctor{
+    margin-top: 70px;
+}
+
+.logo{
+    width: 130px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+
+.heading-underline{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.underline{
+    width: 25vw;
+    height: 4px;
+
+}
+
+.navbar{
+    z-index: 1;
+    height: fit-content;
+}
+
+.navbar .container .collapse ul li{
+    list-style: none;
+    position: relative;
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+
+.navbar .container .collapse ul li a{
+    text-decoration: none;
+    color: #fff;
+  }
+
+.navbar .container .collapse ul li::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: whitesmoke;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+  }
+  
+  .navbar .container .collapse ul li:hover::after{
+    width: 100%;
+  }
 
 .alert-m-error {
     background-color: rgb(248, 200, 180);
@@ -140,7 +190,7 @@ body > footer{
 .doc-reg-image{
     width: 550px;
     position: sticky;
-    top: 70px;
+    top: 120px;
     left: 70px;
 }
 
@@ -149,6 +199,13 @@ body > footer{
    margin: auto;
    margin-top: 12px;
 }
+
+.doc-login-btn:hover{
+    background-color: #fff;
+    border: 1px solid #0a67ca;
+    color: #0f68c7;
+    font-weight: 500;
+ }
 
 .doc-dashboard-car{
     width: 50%;
@@ -182,6 +239,8 @@ body > footer{
 
 .form-stack-item:hover{
     background-color: #005fc5;
+    border: none;
+    transition: 0.3s;
 }
 
 .form-stack-item:hover a{

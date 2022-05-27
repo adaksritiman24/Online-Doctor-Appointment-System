@@ -87,12 +87,14 @@ ul a{
 
 .doc-index-sender{
     font-weight: 500;
+    border: none;
 }
 
 .doc-index-sender:hover{
     box-shadow: 2px 2px rgb(19, 118, 19);
     color: rgb(19, 118, 19);
     background-color: rgb(219, 236, 219);
+    
 }
 
 .feature-card{
