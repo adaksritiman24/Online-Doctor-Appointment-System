@@ -23,7 +23,7 @@ class PatientDashboard(View):
             if isDoctor(request.user):
                 return redirect('/dashboard/doctor/')
             patient = Patient.objects.get(pk = request.user.id)
-            doctors = Doctor.objects.all()[0:12]
+            doctors = Doctor.objects.all()[0:24]
 
             context = {
                 "patient" : patient,

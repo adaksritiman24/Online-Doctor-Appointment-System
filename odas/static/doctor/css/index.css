@@ -31,6 +31,14 @@ body > footer{
     margin: 0;
   }
 
+.back-btn i{
+    transition: 0.5s;
+}
+
+.back-btn:hover i{
+    transform: translateX(-4px);
+}
+
 .heading-underline{
     display: flex;
     justify-content: center;
@@ -44,7 +52,7 @@ body > footer{
 }
 
 .navbar{
-    z-index: 1;
+    z-index: 11;
     height: fit-content;
 }
 
@@ -229,6 +237,15 @@ body > footer{
     gap: 2rem;
 }
 
+.alert-bar-doc-dash{
+    position: fixed;
+    width: 90%;
+    top: 110px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 500;
+}
+
 .form-stack-item{
     border: solid 3px #005fc5;
     font-size: larger;
@@ -239,7 +256,7 @@ body > footer{
 
 .form-stack-item:hover{
     background-color: #005fc5;
-    border: none;
+    /* border: none; */
     transition: 0.3s;
 }
 
@@ -284,7 +301,6 @@ body > footer{
 }
 
 .doc-dashboard-appointments-image{
-    height: 400px;
     width: 400px;
 }
 

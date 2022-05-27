@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{% static 'doctor/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'doctor/css/animation.css' %}">
 
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>ODAS</title>
@@ -39,7 +42,7 @@
               <a class="nav-link" href="{% url 'dd' %}">DASHBOARD</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'd_app' %}">APPOINMENTS</a>
+              <a class="nav-link" href="{% url 'd_app' %}">APPOINTMENTS</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'd_edit' %}">EDIT DETAILS</a>
@@ -55,8 +58,11 @@
         </div>
       </div>
     </nav>
+
+    <div class="mt-5">
     {% block content %}
     {% endblock %}
+  </div>
 
     <!-- Footer -->
     <footer class="footer section">
@@ -92,7 +98,7 @@
                       <a href="#" class="list-link">Whatsapp :62917 68037</a>
                   </li>
                   <li class="list-item">
-                      <a href="#" class="list-link">Email :adaksritiman24@gmail.com</a>
+                      <a href="#" class="list-link">Email :group10@odas.com</a>
                   </li>
               </ul>
           </div>

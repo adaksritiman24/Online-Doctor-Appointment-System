@@ -90,6 +90,61 @@ ul a{
     border: none;
 }
 
+.pat-reg-container{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.heading-underline{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.underline{
+    width: 25vw;
+    height: 4px;
+}
+
+.back-btn i{
+    transition: 0.5s;
+}
+
+.back-btn:hover i{
+    transform: translateX(-4px);
+}
+
+.pat-reg-img img{
+    width: 40vw;
+}
+
+.form-patient tbody, tr, td{
+    padding: 5px;
+}
+
+.doc-search{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pat-dash-card{
+    background: linear-gradient(#defbde,#8fca9d);
+    border: none;
+    box-shadow: 1px 1px 8px 2px hwb(0 35% 65%);
+}
+
+.form-patient{
+    align-items: center;
+    width: fit-content;
+    box-shadow: 5px 5px 10px 2px rgb(185, 229, 185);
+    background-color: rgb(216, 244, 216);
+    gap: 2rem;
+    margin: auto;
+    padding: 2rem;
+}
+
 .doc-index-sender:hover{
     box-shadow: 2px 2px rgb(19, 118, 19);
     color: rgb(19, 118, 19);

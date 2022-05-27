@@ -10,23 +10,22 @@
       </div>
       {% endfor %}
   </div>
-  <section class="top-dashboard-bar">
+  <section class="top-dashboard-bar mt-4">
     <div>
       <h1 class="dashboard-patient">
       {{patient.first_name}} {{patient.last_name}} 
       </h1>
     
-      <h3>Welcome To Your DashBoard</h3>
-      <p><a href="{% url 'logout_p' %}">Logout</a></p>
+      <h3 class="mb-5">Welcome To Your DashBoard</h3>
     </div>
     <div>
-      <a class="dashboard-refresh-btn" href="{% url 'pd' %}">
-        Refresh <i class="fa-solid fa-arrows-rotate"></i>
+      <a class="dashboard-refresh btn btn-lg btn-success" href="{% url 'pd' %}">
+        <i class="fa-solid fa-arrows-rotate"></i>
       </a>
     </div>
   </section>
 
-  <section class="doc-search">
+  <section class="doc-search mb-4">
     <form method="POST">
       {% csrf_token %}
       <input type="text" placeholder="Search by doctor's name or speciality" name="keyword">
@@ -35,9 +34,12 @@
   </section>
   <h3 class = "text-center">Available Doctors</h3>
   <hr>
-  <div class="d-flex justify-content-center" style="flex-wrap: wrap;">
+  <div class="d-flex justify-content-center mb-5" style="flex-wrap: wrap; gap: 1rem;">
+    {% if not doctors %}
+    <h4>No doctors found</h4>
+    {% endif %}
     {% for doctor in doctors %}
-    <div class="card border-dark" style="width: 18rem; margin:5px;">
+    <div class="card border-dark pat-dash-card" style="width: 18rem; margin:5px;">
       <div class="card-body">
 
         <!-- image section -->
@@ -66,29 +68,29 @@
         <!-- selectively show available days -->
         <div style="justify-content: center; align-items:center;">
           {% if doctor.sun_start %}
-          <button disabled class="btn btn-primary btn-sm">Sun</button>
+          <span class="btn btn-success btn-sm">Sun</span>
           {% endif %}
           {% if doctor.mon_start %}
-          <button disabled class="btn btn-primary btn-sm">Mon</button>
+          <span class="btn btn-success btn-sm">Mon</span>
           {% endif %}
           {% if doctor.tue_start %}
-          <button disabled class="btn btn-primary btn-sm">Tue</button>
+          <span class="btn btn-success btn-sm">Tue</span>
           {% endif %}
           {% if doctor.wed_start %}
-          <button disabled class="btn btn-primary btn-sm">Wed</button>
+          <span class="btn btn-success btn-sm">Wed</span>
           {% endif %}
           {% if doctor.thu_start %}
-          <button disabled class="btn btn-primary btn-sm">Thu</button>
+          <span class="btn btn-success btn-sm">Thu</span>
           {% endif %}
           {% if doctor.fri_start %}
-          <button disabled class="btn btn-primary btn-sm">Fri</button>
+          <span class="btn btn-success btn-sm">Fri</span>
           {% endif %}
           {% if doctor.sat_start %}
-          <button disabled class="btn btn-primary btn-sm">Sat</button>
+          <span class="btn btn-success btn-sm">Sat</span>
           {% endif %}
         </div>
 
-        <p class="mt-2">Charges: Rs.{{doctor.charge}}/-</p>
+        <h6 class="mt-4 text-muted">Charges: <b class="text-dark">Rs. {{doctor.charge}}</b></h6>
           <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#payment-for-{{doctor.id}}">
             Book Appointment
           </button>

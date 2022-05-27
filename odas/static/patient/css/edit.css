@@ -58,10 +58,9 @@
 
 /*doctor search area*/
 
-.doc-search {
+.doc-search{
     display: flex;
     justify-content: center;
-
 }
 
 .doc-search > form {
@@ -100,7 +99,7 @@
 
 .top-dashboard-bar > div:nth-child(2) {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .dashboard-refresh-btn{
@@ -116,4 +115,14 @@
 .dashboard-refresh-btn:hover {
     background-color: rgb(62, 62, 245);
     color: white;
+}
+
+@media screen and (max-width: 768px){
+    .doc-search > form {
+        width: 89%;
+        position: relative;
+        /* grid-column: 2; */
+        font-size: 15px;
+        font-family: arial;
+    }
 }

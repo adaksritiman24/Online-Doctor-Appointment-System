@@ -1,101 +1,110 @@
 {% extends "patient/base.html" %}
+{% load static %}
 
 {% block content %}
 
-<h1>Patient Registration Page</h1>
+<h1 class="text-success mt-3" style="text-align:center;">Patient Registration</h1>
+<div class="heading-underline mb-5">
+    <span class="underline progress-bar bg-success progress-bar-striped progress-bar-animated"></span>
+</div>
 
-<form action="" method="post">
-    {% csrf_token %}
-    <table>
-        <tbody>
-            <tr>
-                <td>
-                    {{fm.first_name.label_tag}} 
-                </td>
-                <td>
-                    {{fm.first_name}} {{fm.first_name.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{fm.last_name.label_tag}}
-                </td>
-                <td>
-                    {{fm.last_name}}  {{fm.flast_name.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{fm.gender.label_tag}} 
-                </td>
-                <td>
-                    {{fm.gender}} {{fm.gender.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{fm.dob.label_tag}}
-                </td>
-                <td>
-                    {{fm.dob}}  {{fm.dob.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{fm.contact.label_tag}} 
-                </td>
-                <td>
-                    {{fm.contact}} {{fm.contact.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{fm.email.label_tag}}
-                </td>
-                <td>
-                    {{fm.email}}  {{fm.email.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{fm.username.label_tag}} 
-                </td>
-                <td>
-                    {{fm.username}} {{fm.username.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{fm.password1.label_tag}} 
-                </td>
-                <td>
-                    {{fm.password1}} {{fm.password1.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{fm.password2.label_tag}} 
-                </td>
-                <td>
-                    {{fm.password2}} {{fm.password2.errors | striptags}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-
-                </td>
-                <td>
-                    <input type="submit" value="Submit" class="btn btn-sm btn-primary">
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="pat-reg-container">
     <div>
-        {% for m in messages %}
-        {{m}}
-        {% endfor %}
+        <form action="" method="post" class="form-patient">
+            {% csrf_token %}
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            {{fm.first_name.label_tag}} 
+                        </td>
+                        <td>
+                            {{fm.first_name}} {{fm.first_name.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{fm.last_name.label_tag}}
+                        </td>
+                        <td>
+                            {{fm.last_name}}  {{fm.flast_name.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{fm.gender.label_tag}} 
+                        </td>
+                        <td>
+                            {{fm.gender}} {{fm.gender.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{fm.dob.label_tag}}
+                        </td>
+                        <td>
+                            {{fm.dob}}  {{fm.dob.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{fm.contact.label_tag}} 
+                        </td>
+                        <td>
+                            {{fm.contact}} {{fm.contact.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{fm.email.label_tag}}
+                        </td>
+                        <td>
+                            {{fm.email}}  {{fm.email.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{fm.username.label_tag}} 
+                        </td>
+                        <td>
+                            {{fm.username}} {{fm.username.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{fm.password1.label_tag}} 
+                        </td>
+                        <td>
+                            {{fm.password1}} {{fm.password1.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{fm.password2.label_tag}} 
+                        </td>
+                        <td>
+                            {{fm.password2}} {{fm.password2.errors | striptags}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+        
+                        </td>
+                        <td>
+                            <input type="submit" value="Submit" class="btn btn-md btn-success mt-3">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                {% for m in messages %}
+                {{m}}
+                {% endfor %}
+            </div>
+        </form>
     </div>
-    <p><a href="{% url 'index' %}">Back to home</a></p>
-</form>
+    <div class="pat-reg-img"><img src="{% static 'patient/imgs/pat-reg.png' %}" alt="Couldn't load image"></div>
+</div>
+<p class="px-5 pt-3 pb-3"><a href="{% url 'index' %}" class="text-success back-btn"><i class="fas fa-regular fa-angle-left"></i> Back to home</a></p>
 
 {% endblock %}
