@@ -44,7 +44,7 @@ ul a{
     color: rgb(225, 243, 252);
 }
 .banner-top{
-    animation: 2s ease-in-out 0s 1 slideInFromTop forwards;
+    animation:  ease-in-out 0.4s slideInFromTop forwards;
 }
 .banner-top h1{
     font-size: 4rem;
@@ -58,7 +58,7 @@ ul a{
 }
 
 .banner-bottom{
-    animation: 2s ease-in-out 0s 1 slideInFromRight forwards;
+    animation:   ease-in-out  0.6s burst forwards;
 }
 .banner-inner{
     display: flex;
@@ -102,7 +102,7 @@ ul a{
     margin: 40px;
     padding: 13px;
     border-radius: 12px;
-    animation: 2s ease-in-out 0s 1 slideInFromBottom forwards;
+    animation:  ease-in-out  1s slideInFromBottom forwards;
 }
 .feature-card h3{
     margin: 10px 7px;
@@ -122,7 +122,7 @@ ul a{
 }
 @keyframes slideInFromTop {
     0% {
-      transform: translateY(-100%);
+      transform: translateY(-50px);
       opacity: 0;
     }
     100% {
@@ -130,20 +130,20 @@ ul a{
       opacity: 1;
     }
 }
-@keyframes slideInFromRight {
+@keyframes burst {
     0% {
-      transform: translateX(100%);
+      transform: scale(0.5);
       opacity: 0;
     }
     100% {
-      transform: translateX(0);
+      transform: scale(1);
       opacity: 1;
     }
 }
 
 @keyframes slideInFromBottom {
     0% {
-      transform: translateY(100%);
+      transform: translateY(40px);
       opacity: 0;
     }
     100% {

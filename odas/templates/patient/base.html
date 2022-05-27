@@ -61,7 +61,7 @@
             </li>
             {% if not request.user.is_authenticated %}
             <li class="nav-item">
-              <a href="{% url 'index_d' %}" class="nav-link btn btn-light text-success doc-index-sender">Are you a doctor ?</a>
+              <a href="{% url 'index_d' %}" class="nav-link btn btn-light text-success doc-index-sender btn-sm">Are you a doctor ?</a>
             </li>
             {% endif %}
           </ul>
