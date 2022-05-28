@@ -145,6 +145,55 @@ ul a{
     padding: 2rem;
 }
 
+.navbar{
+    z-index: 11;
+    height: fit-content;
+}
+
+.navbar .container .collapse ul .underlineable{
+    list-style: none;
+    position: relative;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.navbar .container .collapse ul .underlineable a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar .container .collapse ul .underlineable::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: whitesmoke;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+  
+.navbar .container .collapse ul .underlineable:hover::after{
+    width: 100%;
+}
+
+.alert-bar-doc-dash{
+    position: fixed;
+    width: 90%;
+    left: 5%;
+    top: 110px;
+    transform: translateY(-50%);
+    z-index: 500;
+    animation: slideInFromTop 0.5s ease-out forwards;
+}
+
+.logo{
+    width: 130px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
 .doc-index-sender:hover{
     box-shadow: 2px 2px rgb(19, 118, 19);
     color: rgb(19, 118, 19);

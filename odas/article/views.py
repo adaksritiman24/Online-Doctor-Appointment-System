@@ -54,7 +54,7 @@ def read(request,id):
 def home(request):
     print("Home called")
     articles_list_randomized=list(Article.objects.all())
-    article_list_sorted=Article.objects.order_by("-upload_date")[0:4]
+    article_list_sorted=Article.objects.order_by("-id")[0:4]
     random.shuffle(articles_list_randomized)
     # print(articles_list_randomized)
     print("Herexxxx")

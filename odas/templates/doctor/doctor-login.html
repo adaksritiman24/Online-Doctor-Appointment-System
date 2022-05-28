@@ -1,7 +1,7 @@
 {% extends "doctor/base.html" %}
 
 {% block content %}
-<form action="" method="post" class="form-center mb-5" style="margin-top:100px;">
+<form action="" method="post" class="form-center mb-5 mt-5">
     {% csrf_token %}
     <table class="login-form">
         <tbody>
@@ -33,6 +33,6 @@
         {{m}}
         {% endfor %}
     </div>
-    <p><a href="{% url 'index_d' %}">Back to Home</a></p>
+    <p class="mt-3"><a href="{% url 'index_d' %}">Back to Home</a></p>
 </form>
 {% endblock %}

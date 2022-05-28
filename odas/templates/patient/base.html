@@ -25,7 +25,9 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'index' %}"><b>O. D. A. S.</b></a>
+        <a class="navbar-brand" href="{% url 'index' %}">
+          <img src="{% static 'doctor/imgs/ODAS_Logo.png' %}" alt="ODAS LOGO" class="logo">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,30 +35,30 @@
           <div></div>
           <ul class="navbar-nav">
             {% if not request.user.is_authenticated %}
-            <li class="nav-item">
+            <li class="nav-item underlineable">
               <a class="nav-link" href="{% url 'pr' %}" style="margin-right: 10px;"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
             </li>
             
-            <li class="nav-item">
-              <button type="button" class="btn nav-link" data-bs-toggle="modal" data-bs-target="#LoginModal" id="login-btn">
+            <li class="nav-item underlineable">
+              <button type="button" style="color:#fff;" class="btn nav-link" data-bs-toggle="modal" data-bs-target="#LoginModal" id="login-btn">
                 <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
               </button>
             </li>  
             {% else %}
-            <li class="nav-item">
+            <li class="nav-item underlineable">
               <a class="nav-link" href="{% url 'pd' %}"><i class="fa-solid fa-hospital"></i> DashBoard</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item underlineable">
               <a class="nav-link" href="{% url 'p_app' %}"><i class="fa-solid fa-calendar-check"></i> Appointments</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item underlineable">
               <a class="nav-link" href="{% url 'p_edit' %}"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item underlineable">
               <a class="nav-link" href="{% url 'logout_p' %}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
             </li>
             {% endif %}
-            <li class="nav-item">
+            <li class="nav-item underlineable">
               <a class="nav-link" href="{% url 'articleshome' %}"><i class="fa-solid fa-newspaper"></i> Articles</a>
             </li>
             {% if not request.user.is_authenticated %}
@@ -69,9 +71,10 @@
       </div>
     </nav>
     
-
+    <div class="mt-5">
     {% block content %}
     {% endblock %}
+    </div>
 
     <!-- Footer -->
     <footer class="bg-success section">

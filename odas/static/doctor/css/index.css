@@ -20,10 +20,6 @@ body > footer{
     z-index: 2;
 }
 
-#hello-doctor{
-    margin-top: 70px;
-}
-
 .logo{
     width: 130px;
     cursor: pointer;
@@ -240,10 +236,22 @@ body > footer{
 .alert-bar-doc-dash{
     position: fixed;
     width: 90%;
+    left: 5%;
     top: 110px;
-    left: 50%;
-    transform: translate(-50%, 0);
+    transform: translateY(-50%);
     z-index: 500;
+    animation: slideInFromTop 0.5s ease-out forwards;
+}
+
+@keyframes slideInFromTop {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
 }
 
 .form-stack-item{
@@ -301,7 +309,7 @@ body > footer{
 }
 
 .doc-dashboard-appointments-image{
-    width: 400px;
+    width: 300px;
 }
 
 .text-center{
