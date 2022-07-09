@@ -3,6 +3,16 @@
 # Online-Doctor-Appointment-System
 Final Year Group project - Grp 10
 
+## Run project directly with docker
+1. Build the docker image: 
+`docker build -t odas .`
+
+2. Run the container:
+`docker run -p 8000:8000 odas`
+
+3. View the application at:
+### http://localhost:8000/
+
 ## Steps to setup virtual environment (Windows):
 1. Ensure that python 3 is installed in the system
 2. In command prompt type:
@@ -23,7 +33,7 @@ Run:
 
 `deactivate`
 
-## Steps to compile and execute the project:
+## Steps to compile and execute the project(without Docker):
 
 1. Download and Install python in the system (must be python 3 | preferably python version 3.9.6)
 2. Ensure python is properly installed by running the following command from command prompt.
